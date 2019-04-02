@@ -1,0 +1,20 @@
+﻿@model PizzamGelsin.Models.ResimUpdateListModel
+
+<div>
+    <h4>ResimUpdateListModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Url)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Url)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ResimUpdateListModelID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

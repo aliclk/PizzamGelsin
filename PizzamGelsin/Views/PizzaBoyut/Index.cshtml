@@ -1,0 +1,98 @@
+﻿@model IEnumerable<PizzamGelsin.Models.PizzaBoyutUpdateListModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Html.ActionLink("Oluştur", "Create", null, new
+{
+  @class = "btn btn-primary",
+  data_ajax = "true",
+  data_ajax_method = "GET",
+  data_ajax_mode = "replace",
+  data_ajax_update = "#mahmut",
+  data_target = "#logoutModal",
+  data_toggle = "modal"
+})
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BoyutAdi)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BoyutAdi)
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "Edit", new { id = item.PizzaBoyutUpdateListModelID }, new
+               {
+                   @class = "btn btn-primary",
+                   data_ajax = "true",
+                   data_ajax_method = "GET",
+                   data_ajax_mode = "replace",
+                   data_ajax_update = "#mahmut",
+                   data_target = "#logoutModal",
+                   data_toggle = "modal"
+               }) |
+                @Html.ActionLink("Detay", "Details", new { id = item.PizzaBoyutUpdateListModelID }, new
+           {
+               @class = "btn btn-primary",
+               data_ajax = "true",
+               data_ajax_method = "GET",
+               data_ajax_mode = "replace",
+               data_ajax_update = "#mahmut",
+               data_target = "#logoutModal",
+               data_toggle = "modal"
+           }) |
+                @Html.ActionLink("Sil", "Delete", new { id = item.PizzaBoyutUpdateListModelID }, new { @class = "btn btn-danger", @id = "delete" })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div id="mahmut" class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Iptal</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts {
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script>
+            $("body").on("click", "#delete", function (e) {
+                let devamı = this.href; // Evet'e basar ise devam etsin diye
+                e.preventDefault(); // Delete işlemini engellemek için
+                swal({
+                    title: "Silmek istediğinize emin misiniz?",
+                    text: "Bu işlem yapıldıktan sonra geri dönüşü yoktur!",
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                    .then((willDelete) => {
+                        if (willDelete) { //Eğer true ise
+                            window.location = devamı; // işlemi devam ettir
+                        }
+                    });
+            });
+    </script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+}

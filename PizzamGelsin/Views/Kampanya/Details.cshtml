@@ -1,0 +1,28 @@
+﻿@model PizzamGelsin.Models.KampanyaUpdateListModel
+
+<div>
+    <h4>KampanyaUpdateListModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Fiyat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fiyat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KampanyaAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KampanyaAdi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.KampanyaUpdateListModelID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

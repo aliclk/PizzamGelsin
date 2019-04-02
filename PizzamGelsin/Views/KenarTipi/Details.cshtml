@@ -1,0 +1,36 @@
+﻿@model PizzamGelsin.Models.KenarTipiUpdateListModel
+
+<div>
+    <h4>KenarTipiUpdateListModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.KenarAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KenarAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KenarResimUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KenarResimUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EkFiyat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EkFiyat)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.KenarTipiUpdateListModelID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

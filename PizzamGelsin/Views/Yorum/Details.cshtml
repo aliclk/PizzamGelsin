@@ -1,0 +1,20 @@
+﻿@model PizzamGelsin.Models.YorumUpdateListModel
+
+<div>
+    <h4>YorumUpdateListModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.YorumIcerigi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.YorumIcerigi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.YorumUpdateListModelID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

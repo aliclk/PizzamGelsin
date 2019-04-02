@@ -1,0 +1,28 @@
+﻿@model PizzamGelsin.Models.IcecekBoyutUpdateListModel
+
+<div>
+    <h4>IcecekBoyutUpdateListModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Boyut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Boyut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResimUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResimUrl)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IcecekBoyutUpdateListModelID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

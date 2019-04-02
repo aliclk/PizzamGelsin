@@ -1,0 +1,52 @@
+﻿@model PizzamGelsin.Models.KrediKartiUpdateListModel
+
+<div>
+    <h4>KrediKartiUpdateListModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.KisiAdSoyad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KisiAdSoyad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KrediKartNo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KrediKartNo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Yil)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Yil)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cvv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cvv)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.KrediKartiUpdateListModelID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

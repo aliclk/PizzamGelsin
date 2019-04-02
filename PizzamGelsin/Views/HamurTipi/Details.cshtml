@@ -1,0 +1,36 @@
+﻿@model PizzamGelsin.Models.HamurTipiUpdateListModel
+
+<div>
+    <h4>HamurTipiUpdateListModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.HamurAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HamurAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResimUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResimUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EkFiyat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EkFiyat)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.HamurTipiUpdateListModelID })
+    @Html.ActionLink("Back to List", "Index")
+</p>

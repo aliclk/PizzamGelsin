@@ -1,0 +1,20 @@
+﻿@model PizzamGelsin.Models.GununMenusuUpdateListModel
+
+<div>
+    <h4>GununMenusuUpdateListModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Tarih)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tarih)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.GununMenusuUpdateListModelID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

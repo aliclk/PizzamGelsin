@@ -1,0 +1,28 @@
+﻿@model PizzamGelsin.Models.WebSiteUpdateListModel
+
+<div>
+    <h4>WebSiteUpdateListModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.LogoUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LogoUrl)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.WebAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.WebAdi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.WebSiteUpdateListModelID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

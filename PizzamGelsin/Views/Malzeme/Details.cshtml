@@ -1,0 +1,36 @@
+﻿@model PizzamGelsin.Models.MalzemeUpdateListModel
+
+<div>
+    <h4>MalzemeUpdateListModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EkFiyat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EkFiyat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MalzemeAdi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MalzemeAdi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ResimUrl)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ResimUrl)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MalzemeUpdateListModelID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
