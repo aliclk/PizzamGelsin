@@ -34,5 +34,9 @@ namespace PizzamGelsin.Entities
         {
             UrunResimleri = new List<Resim>();
         }
+        public override string ToString()
+        {
+            return UrunAdi;
+        }
     }
 }

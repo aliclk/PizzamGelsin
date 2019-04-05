@@ -1,9 +1,10 @@
 ﻿@model PizzamGelsin.Models.MalzemeCreateModel
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "Malzeme", FormMethod.Post,
+     new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>MalzemeCreateModel</h4>
         <hr />

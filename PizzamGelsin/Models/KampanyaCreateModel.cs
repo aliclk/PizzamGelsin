@@ -14,6 +14,8 @@ namespace PizzamGelsin.Models
         [Display(Name = "Kampanya Adı")]
         public string KampanyaAdi { get; set; }
         [Display(Name = "Kampanyaya Ürünleri Ekle")]
-        public List<Urun> Urunler { get; set; }
+        public Pizza Pizza { get; set; }
+        public Icecek Icecek { get; set; }
+
     }
 }

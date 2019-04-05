@@ -20,6 +20,9 @@ data_toggle = "modal"
         <th>
             @Html.DisplayNameFor(model => model.Tarih)
         </th>
+        <th>
+            Ürünler
+        </th>
         <th></th>
     </tr>
 
@@ -28,6 +31,14 @@ data_toggle = "modal"
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Tarih)
+            </td>
+            <td>
+                <ul>
+                    @foreach (var urun in item.Urunler)
+                    {
+                    <li>@urun.UrunAdi,@urun.UrunFiyat $</li>
+                    }
+                </ul>
             </td>
             <td>
                 @Html.ActionLink("Düzenle", "Edit", new { id = item.GununMenusuUpdateListModelID }, new
@@ -77,23 +88,51 @@ data_toggle = "modal"
 @section scripts {
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
     <script>
-            $("body").on("click", "#delete", function (e) {
-                let devamı = this.href; // Evet'e basar ise devam etsin diye
-                e.preventDefault(); // Delete işlemini engellemek için
-                swal({
-                    title: "Silmek istediğinize emin misiniz?",
-                    text: "Bu işlem yapıldıktan sonra geri dönüşü yoktur!",
-                    icon: "warning",
-                    buttons: true,
-                    dangerMode: true,
-                })
-                    .then((willDelete) => {
-                        if (willDelete) { //Eğer true ise
-                            window.location = devamı; // işlemi devam ettir
-                        }
-                    });
-            });
+        $("body").on("click", "#delete", function (e) {
+            let devamı = this.href; // Evet'e basar ise devam etsin diye
+            e.preventDefault(); // Delete işlemini engellemek için
+            swal({
+                title: "Silmek istediğinize emin misiniz?",
+                text: "Bu işlem yapıldıktan sonra geri dönüşü yoktur!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) { //Eğer true ise
+                        window.location = devamı; // işlemi devam ettir
+                    }
+                });
+        });
     </script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        function urunEkle() {
+            //Seçili Ürünü buluyor
+            var urunList = document.getElementsByName("urun")[0];
+            var selectedUrun = urunList.options[urunList.selectedIndex].text;
+            //----------
+
+            $.ajax({
+                type: "POST",
+                url: '/GununMenusu/UrunEkle?urunAdi=' + selectedUrun
+            })
+        }
+
+        function deleteUrun(urunId) {
+            $.ajax({
+                type: "Post",
+                url: '/GununMenusu/UrunSil?id=' + urunId
+            });
+        }
+        function urunGuncelle() {
+            $.ajax({
+                type: "GET",
+                url: '/GununMenusu/UrunGuncellePartial'
+            }).then(function (result) {
+                $("#eklenmisUrunler").html(result)
+            })
+        }
+    </script>
 }
 

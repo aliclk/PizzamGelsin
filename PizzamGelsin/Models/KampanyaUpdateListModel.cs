@@ -15,8 +15,11 @@ namespace PizzamGelsin.Models
         public double Fiyat { get; set; }
         [Display(Name = "Kampanya Adı")]
         public string KampanyaAdi { get; set; }
-        [Display(Name = "Kampanyaya Ürünleri Ekle")]
-        public List<Urun> Urunler { get; set; }
+        [Display(Name = "Kampanyaya Pizza Ekle")]
+        public Pizza Pizza { get; set; }
+        [Display(Name = "Kampanyaya Icecek Ekle")]
+        public Icecek Icecek { get; set; }
+
 
         public static List<KampanyaUpdateListModel> GetList()
         {
@@ -27,7 +30,8 @@ namespace PizzamGelsin.Models
                 kulm.KampanyaUpdateListModelID = kampanya.ID;
                 kulm.Fiyat = kampanya.Fiyat;
                 kulm.KampanyaAdi = kampanya.KampanyaAdi;
-                kulm.Urunler = kampanya.Urunler;
+                kulm.Pizza = kampanya.Pizza;
+                kulm.Icecek = kampanya.Icecek;
 
                 returnList.Add(kulm);
             }

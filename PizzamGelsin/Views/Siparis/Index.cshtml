@@ -8,16 +8,6 @@
 }
 
 
-@Html.ActionLink("Oluştur", "Create", null, new
-{
-@class = "btn btn-primary",
-data_ajax = "true",
-data_ajax_method = "GET",
-data_ajax_mode = "replace",
-data_ajax_update = "#mahmut",
-data_target = "#logoutModal",
-data_toggle = "modal"
-})
 <table class="table">
     <tr>
         <th></th>
@@ -27,16 +17,7 @@ data_toggle = "modal"
     {
         <tr>
             <td>
-                @Html.ActionLink("Düzenle", "Edit", new { id = item.SiparisUpdateListModelID }, new
-               {
-                   @class = "btn btn-primary",
-                   data_ajax = "true",
-                   data_ajax_method = "GET",
-                   data_ajax_mode = "replace",
-                   data_ajax_update = "#mahmut",
-                   data_target = "#logoutModal",
-                   data_toggle = "modal"
-               }) |
+              
                 @Html.ActionLink("Detay", "Details", new { id = item.SiparisUpdateListModelID }, new
            {
                @class = "btn btn-primary",

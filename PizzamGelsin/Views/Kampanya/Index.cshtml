@@ -25,43 +25,55 @@ data_toggle = "modal"
         <th>
             @Html.DisplayNameFor(model => model.KampanyaAdi)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pizza.UrunAdi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Icecek.UrunAdi)
+        </th>
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fiyat)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.KampanyaAdi)
-            </td>
-            <td>
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Fiyat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KampanyaAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pizza.UrunAdi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Icecek.UrunAdi)
+        </td>
+        <td>
 
-                @Html.ActionLink("Düzenle", "Edit", new { id = item.KampanyaUpdateListModelID }, new
-           {
-               @class = "btn btn-primary",
-               data_ajax = "true",
-               data_ajax_method = "GET",
-               data_ajax_mode = "replace",
-               data_ajax_update = "#mahmut",
-               data_target = "#logoutModal",
-               data_toggle = "modal"
-           }) |
-                @Html.ActionLink("Detay", "Details", new { id = item.KampanyaUpdateListModelID }, new
-           {
-               @class = "btn btn-primary",
-               data_ajax = "true",
-               data_ajax_method = "GET",
-               data_ajax_mode = "replace",
-               data_ajax_update = "#mahmut",
-               data_target = "#logoutModal",
-               data_toggle = "modal"
-           }) |
-                @Html.ActionLink("Sil", "Delete", new { id = item.KampanyaUpdateListModelID }, new { @class = "btn btn-danger", @id = "delete" })
-            </td>
-        </tr>
+            @Html.ActionLink("Düzenle", "Edit", new { id = item.KampanyaUpdateListModelID }, new
+       {
+           @class = "btn btn-primary",
+           data_ajax = "true",
+           data_ajax_method = "GET",
+           data_ajax_mode = "replace",
+           data_ajax_update = "#mahmut",
+           data_target = "#logoutModal",
+           data_toggle = "modal"
+       }) |
+            @Html.ActionLink("Detay", "Details", new { id = item.KampanyaUpdateListModelID }, new
+       {
+           @class = "btn btn-primary",
+           data_ajax = "true",
+           data_ajax_method = "GET",
+           data_ajax_mode = "replace",
+           data_ajax_update = "#mahmut",
+           data_target = "#logoutModal",
+           data_toggle = "modal"
+       }) |
+            @Html.ActionLink("Sil", "Delete", new { id = item.KampanyaUpdateListModelID }, new { @class = "btn btn-danger", @id = "delete" })
+        </td>
+    </tr>
     }
 
 </table>

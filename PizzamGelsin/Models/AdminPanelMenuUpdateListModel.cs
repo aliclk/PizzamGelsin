@@ -14,7 +14,7 @@ namespace PizzamGelsin.Models
         public string AdminPanelMenuUpdateListModelID { get; set; }
         [Display(Name = "Adı")]
         public string Adi { get; set; }
-        [Display(Name = "Resim Yolu")]
+        [Display(Name = "Url")]
         public string Url { get; set; }
 
         public static List<AdminPanelMenuUpdateListModel> GetList()
@@ -25,7 +25,7 @@ namespace PizzamGelsin.Models
                 AdminPanelMenuUpdateListModel apm = new AdminPanelMenuUpdateListModel();
                 apm.AdminPanelMenuUpdateListModelID = adminpanelmenu.ID;
                 apm.Adi = adminpanelmenu.Adi;
-
+                apm.Url = adminpanelmenu.Url;
                 returnList.Add(apm);
             }
             return returnList;

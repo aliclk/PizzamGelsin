@@ -14,9 +14,30 @@ namespace PizzamGelsin.Controllers.Admin
         // GET: GununMenusu
         public ActionResult Index()
         {
+            Session["CurrentMenuUrunler"] = new List<Urun>();
             return View(GununMenusuUpdateListModel.GetList());
         }
+        [HttpPost]
+        public void UrunEkle(string urunAdi)
+        {
+           var currentUrunler = Session["CurrentMenuUrunler"] as List<Urun>;
+            Pizza veriTabanındanPizza = DbFactory.PizzaCrud.Records.FirstOrDefault(x => x.UrunAdi == urunAdi);
 
+            Pizza pizza = new Pizza();
+            pizza.UrunAdi = urunAdi;
+            pizza.UrunAciklama = veriTabanındanPizza.UrunAciklama;
+            pizza.UrunFiyat = veriTabanındanPizza.UrunFiyat;
+            currentUrunler.Add(pizza);
+            Session["CurrentMenuUrunler"] = currentUrunler;
+        }
+
+        [HttpPost]
+        public void UrunSil(string id)
+        {
+            var currentUrunler = Session["CurrentMenuUrunler"] as List<Urun>;
+            currentUrunler.RemoveAll(x => x.ID == id);
+            Session["CurrentMenuUrunler"] = currentUrunler;
+        }
         // GET: GununMenusu/Details/5
         public ActionResult Details(string id)
         {
@@ -28,25 +49,27 @@ namespace PizzamGelsin.Controllers.Admin
         {
             return PartialView();
         }
-
+        public PartialViewResult UrunGuncellePartial()
+        {
+            return PartialView();
+        }
         // POST: GununMenusu/Create
         [HttpPost]
         public ActionResult Create(GununMenusuCreateModel gmcl)
         {
-            try
-            {
+              var currentUrunler = Session["CurrentMenuUrunler"] as List<Urun>;
+
                 GununMenusu gununmenusu = new GununMenusu();
                 gununmenusu.Tarih = gmcl.Tarih;
-                gununmenusu.Urunler = gmcl.Urunler;
-                
-                var t = DbFactory.GununMenusuCrud.Insert(gununmenusu);
+                gununmenusu.Urunler = currentUrunler;
+
+                PizzaContext ctx = new PizzaContext();
+                ctx.GununMenusu.Add(gununmenusu);
+                ctx.SaveChanges();
+               // var t = DbFactory.GununMenusuCrud.Insert(gununmenusu);
                 
                 return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+          
         }
 
         // GET: GununMenusu/Edit/5

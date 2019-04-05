@@ -38,9 +38,10 @@ namespace PizzamGelsin.Controllers.Admin
                 KenarTipi kenartipi = new KenarTipi();
                 kenartipi.KenarAdi = ktcm.KenarAdi;
                 kenartipi.EkFiyat = ktcm.EkFiyat;
-                kenartipi.KenarResim = new Resim { Url = Server.MapPath("~/classes/m.jpg") };
+                string serverPath = Server.MapPath("~/Images/" + Guid.NewGuid().ToString() + ".png");
+                kenartipi.KenarResim = new Resim { Url = serverPath };
                 DbFactory.KenarTipi.Insert(kenartipi);
-                //file.SaveAs(Server.MapPath("~/classes/m.jpg"));
+                file.SaveAs(Server.MapPath(serverPath));
                 return RedirectToAction("Index");
             }
             catch

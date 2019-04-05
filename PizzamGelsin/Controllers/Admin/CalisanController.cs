@@ -39,10 +39,11 @@ namespace PizzamGelsin.Controllers.Admin
                 calisan.Adi = ccm.Adi;
                 calisan.Ozgecmis = ccm.Ozgecmis;
                 calisan.Unvan = ccm.Unvan;
-                
-                calisan.Resim = new Resim { Url = Server.MapPath("~/classes/m.jpg") };
+
+                string serverPath = Server.MapPath("~/Images/"+Guid.NewGuid().ToString()+".png");
+                calisan.Resim = new Resim { Url = serverPath };
                 var t = DbFactory.CalisanCrud.Insert(calisan);
-                //file.SaveAs(Server.MapPath("~/classes/m.jpg"));
+               file.SaveAs(serverPath);
                 return RedirectToAction("Index");
             }
             catch

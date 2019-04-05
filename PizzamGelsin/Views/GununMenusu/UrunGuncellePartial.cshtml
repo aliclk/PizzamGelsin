@@ -1,0 +1,8 @@
+﻿@foreach (var item in Session["CurrentMenuUrunler"] as List<PizzamGelsin.Entities.Urun>)
+{
+    <li>
+        @item.UrunAdi
+        <sup><a href="#" onclick="deleteUrun('@item.ID'); urunGuncelle();" style="color:red">X</a></sup>
+    </li>
+}
+

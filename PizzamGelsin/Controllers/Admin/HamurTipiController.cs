@@ -38,9 +38,10 @@ namespace PizzamGelsin.Controllers.Admin
                 HamurTipi hamurtipi = new HamurTipi();
                 hamurtipi.HamurAdi = htcm.HamurAdi;
                 hamurtipi.EkFiyat = htcm.EkFiyat;
-                hamurtipi.Resim = new Resim { Url = Server.MapPath("~/classes/m.jpg") };
+                string serverPath = Server.MapPath("~/Images/" + Guid.NewGuid().ToString() + ".png");
+                hamurtipi.Resim = new Resim { Url = serverPath };
                 var t = DbFactory.HamurTipiCrud.Insert(hamurtipi);
-                file.SaveAs(Server.MapPath("~/classes/m.jpg"));
+                file.SaveAs(serverPath);
                 return RedirectToAction("Index");
             }
             catch

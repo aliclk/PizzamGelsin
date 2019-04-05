@@ -39,12 +39,12 @@ namespace PizzamGelsin.Controllers.Admin
                 Malzeme malzeme = new Malzeme();
                 malzeme.EkFiyat = mcm.EkFiyat;
                 malzeme.MalzemeAdi = mcm.MalzemeAdi;
-                
-                
 
-                malzeme.Resim = new Resim { Url = Server.MapPath("~/classes/m.jpg") };
+
+                string serverPath = Server.MapPath("~/Images/" + Guid.NewGuid().ToString() + ".png");
+                malzeme.Resim = new Resim { Url = serverPath };
                 var t = DbFactory.MalzemeCrud.Insert(malzeme);
-                //file.SaveAs(Server.MapPath("~/classes/m.jpg"));
+                file.SaveAs(serverPath);
                 return RedirectToAction("Index");
             }
             catch

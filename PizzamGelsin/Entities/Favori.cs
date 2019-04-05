@@ -10,11 +10,6 @@ namespace PizzamGelsin.Entities
     [Table("Favori")]
     public class Favori : DbObject
     {
-        public List<Urun> Urunler { get; set; }
-
-        public Favori()
-        {
-            Urunler = new List<Urun>();
-        }
+        public Urun Urunler { get; set; }
     }
 }

@@ -1,0 +1,105 @@
+@font-face {
+    font-family:'cs-icon';src:url("../fonts/cs-font.eot");src:url("../fonts/cs-font.eot") format("embedded-opentype"),url("../fonts/cs-font.ttf") format("truetype"),url("../fonts/cs-font.woff") format("woff"),url("../fonts/cs-font.svg") format("svg");font-weight:normal;font-style:normal
+}[class^="cs-icon"],[class*=" cs-icon"] {
+    font-family: 'cs-icon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.icon-filter:before {
+    content: "\e915"
+}
+
+.icon-bag:before {
+    content: "\e900"
+}
+
+.icon-bin:before {
+    content: "\e901"
+}
+
+.icon-car:before {
+    content: "\e902"
+}
+
+.icon-cart:before {
+    content: "\e903"
+}
+
+.icon-close:before {
+    content: "\e904"
+}
+
+.icon-down:before {
+    content: "\e905"
+}
+
+.icon-ellipsis:before {
+    content: "\e906"
+}
+
+.icon-eye:before {
+    content: "\e907"
+}
+
+.icon-gift:before {
+    content: "\e908"
+}
+
+.icon-heart:before {
+    content: "\e909"
+}
+
+.icon-left:before {
+    content: "\e90a"
+}
+
+.icon-mail:before {
+    content: "\e90b"
+}
+
+.icon-marker:before {
+    content: "\e90c"
+}
+
+.icon-menu:before {
+    content: "\e90d"
+}
+
+.icon-minus:before {
+    content: "\e90e"
+}
+
+.icon-percent:before {
+    content: "\e90f"
+}
+
+.icon-phone:before {
+    content: "\e910"
+}
+
+.icon-plus:before {
+    content: "\e911"
+}
+
+.icon-right:before {
+    content: "\e912"
+}
+
+.icon-search:before {
+    content: "\e913"
+}
+
+.icon-up:before {
+    content: "\e914"
+}
+
+.icon-retweet2:before {
+    content: "\e916"
+}

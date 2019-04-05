@@ -6,16 +6,6 @@
 }
 
 
-@Html.ActionLink("Oluştur", "Create", null, new
-{
-@class = "btn btn-primary",
-data_ajax = "true",
-data_ajax_method = "GET",
-data_ajax_mode = "replace",
-data_ajax_update = "#mahmut",
-data_target = "#logoutModal",
-data_toggle = "modal"
-})
 <table class="table">
     <tr>
         <th>
@@ -31,27 +21,6 @@ data_toggle = "modal"
                 @Html.DisplayFor(modelItem => item.YorumIcerigi)
             </td>
             <td>
-
-                @Html.ActionLink("Düzenle", "Edit", new { id = item.YorumUpdateListModelID }, new
-           {
-               @class = "btn btn-primary",
-               data_ajax = "true",
-               data_ajax_method = "GET",
-               data_ajax_mode = "replace",
-               data_ajax_update = "#mahmut",
-               data_target = "#logoutModal",
-               data_toggle = "modal"
-           }) |
-                @Html.ActionLink("Detay", "Details", new { id = item.YorumUpdateListModelID }, new
-           {
-               @class = "btn btn-primary",
-               data_ajax = "true",
-               data_ajax_method = "GET",
-               data_ajax_mode = "replace",
-               data_ajax_update = "#mahmut",
-               data_target = "#logoutModal",
-               data_toggle = "modal"
-           }) |
                 @Html.ActionLink("Sil", "Delete", new { id = item.YorumUpdateListModelID }, new { @class = "btn btn-danger", @id = "delete" })
 
             </td>

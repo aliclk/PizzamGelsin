@@ -37,13 +37,13 @@ namespace PizzamGelsin.Controllers.Admin
             {
                 Kullanici kullanici = new Kullanici();
                 kullanici.Adi = kcm.Adi;
-                kullanici.Adresler = kcm.Adresler;
+                //kullanici.Adresler = kcm.Adresler;
                 kullanici.Eposta = kcm.Eposta;
                 kullanici.Sifre = kcm.Sifre;
-                kullanici.Yorumlar = kcm.Yorumlar;
-                kullanici.Favoriler = kcm.Favoriler;
-                kullanici.GecmisSiparisler = kcm.GecmisSiparisler;
-                kullanici.Sepet = kcm.Sepet;
+                //kullanici.Yorumlar = kcm.Yorumlar;
+                //kullanici.Favoriler = kcm.Favoriler;
+                //kullanici.GecmisSiparisler = kcm.GecmisSiparisler;
+                //kullanici.Sepet = kcm.Sepet;
                 kullanici.Telefon = kcm.Telefon;
                 kullanici.Soyadi = kcm.Soyadi;
                 kullanici.KullaniciTipi = kcm.KullaniciTipi;
@@ -73,13 +73,13 @@ namespace PizzamGelsin.Controllers.Admin
             {
                 Kullanici currentkullanici = DbFactory.KullaniciCrud.Find(id);
                 currentkullanici.Adi = kulm.Adi;
-                currentkullanici.Adresler = kulm.Adresler;
+                //currentkullanici.Adresler = kulm.Adresler;
                 currentkullanici.Eposta = kulm.Eposta;
                 currentkullanici.Sifre = kulm.Sifre;
-                currentkullanici.Yorumlar = kulm.Yorumlar;
-                currentkullanici.Favoriler = kulm.Favoriler;
-                currentkullanici.GecmisSiparisler = kulm.GecmisSiparisler;
-                currentkullanici.Sepet = kulm.Sepet;
+                //currentkullanici.Yorumlar = kulm.Yorumlar;
+                //currentkullanici.Favoriler = kulm.Favoriler;
+                //currentkullanici.GecmisSiparisler = kulm.GecmisSiparisler;
+                //currentkullanici.Sepet = kulm.Sepet;
                 currentkullanici.Telefon = kulm.Telefon;
                 currentkullanici.Soyadi = kulm.Soyadi;
                 currentkullanici.KullaniciTipi = kulm.KullaniciTipi;

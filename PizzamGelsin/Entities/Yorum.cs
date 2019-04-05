@@ -11,6 +11,7 @@ namespace PizzamGelsin.Entities
     [Table("Yorum")]
     public class Yorum : DbObject
     {
+        public Kullanici Kullanici { get; set; }
         public Urun Urun { get; set; }
         [Required]
         [MaxLength(3000)]

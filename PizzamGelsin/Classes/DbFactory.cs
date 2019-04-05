@@ -69,20 +69,7 @@ namespace PizzamGelsin.Classes
             }
         }
 
-        private static volatile GenelCrud<GununMenusu> _gununMenusuCrud = null;
-
-        public static GenelCrud<GununMenusu> GununMenusuCrud
-        {
-            get
-            {
-                if (_gununMenusuCrud == null)
-                {
-                    _gununMenusuCrud = new GenelCrud<GununMenusu>(_db, _db.GununMenusu);
-                    _gununMenusuCrud.CheckConnection();
-                }
-                return _gununMenusuCrud;
-            }
-        }
+    
 
         private static volatile GenelCrud<Hakkimizda> _hakkimizdaCrud = null;
 
@@ -323,20 +310,7 @@ namespace PizzamGelsin.Classes
             }
         }
 
-        private static volatile GenelCrud<Tatli> _tatliCrud = null;
 
-        public static GenelCrud<Tatli> TatliCrud
-        {
-            get
-            {
-                if (_tatliCrud == null)
-                {
-                    _tatliCrud = new GenelCrud<Tatli>(_db, _db.Tatli);
-                    _tatliCrud.CheckConnection();
-                }
-                return _tatliCrud;
-            }
-        }
 
         private static volatile GenelCrud<Urun> _urunCrud = null;
 
@@ -352,6 +326,7 @@ namespace PizzamGelsin.Classes
                 return _urunCrud;
             }
         }
+
         private static volatile GenelCrud<WebSite> _webSiteCrud = null;
 
         public static GenelCrud<WebSite> WebSiteCrud

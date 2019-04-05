@@ -37,10 +37,10 @@ namespace PizzamGelsin.Controllers.Admin
             {
                 WebSite website = new WebSite();
                 website.WebAdi = wscm.WebAdi;
-                //website.Logo.Url = wscm.LogoUrl;
-                website.Logo = new Resim { Url = Server.MapPath("~/classes/m.jpg") };
+                string serverPath = Server.MapPath("~/Images/" + Guid.NewGuid().ToString() + ".png");
+                website.Logo = new Resim { Url = serverPath };
                 DbFactory.WebSiteCrud.Insert(website);
-                //file.SaveAs(Server.MapPath("~/classes/m.jpg"));
+              file.SaveAs(serverPath);
                 return RedirectToAction("Index");
             }
             catch

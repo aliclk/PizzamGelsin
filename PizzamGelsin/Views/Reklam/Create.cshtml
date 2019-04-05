@@ -1,9 +1,10 @@
 ﻿@model PizzamGelsin.Models.ReklamCreateModel
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "Reklam", FormMethod.Post,
+     new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>ReklamCreateModel</h4>
         <hr />

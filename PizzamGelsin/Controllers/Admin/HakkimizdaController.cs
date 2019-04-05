@@ -38,11 +38,11 @@ namespace PizzamGelsin.Controllers.Admin
                 Hakkimizda hakkimizda = new Hakkimizda();
                 hakkimizda.Baslik = hcm.Baslik;
                 hakkimizda.Icerik = hcm.Icerik;
-                
-                
-                hakkimizda.Resim = new Resim { Url = Server.MapPath("~/classes/m.jpg") };
+                string serverPath = Server.MapPath("~/Images/" + Guid.NewGuid().ToString() + ".png");
+
+                hakkimizda.Resim = new Resim { Url = serverPath };
                 var t = DbFactory.HakkimizdaCrud.Insert(hakkimizda);
-                //file.SaveAs(Server.MapPath("~/classes/m.jpg"));
+                file.SaveAs(serverPath);
                 return RedirectToAction("Index");
             }
             catch

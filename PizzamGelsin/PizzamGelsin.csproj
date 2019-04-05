@@ -52,6 +52,9 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="OHMConvertAndClone, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OhmCC.1.0.0\lib\net461\OHMConvertAndClone.dll</HintPath>
+    </Reference>
     <Reference Include="OhmCrud, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\OhmCrud.1.0.1\lib\net461\OhmCrud.dll</HintPath>
     </Reference>
@@ -139,13 +142,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Classes\DbFactory.cs" />
     <Compile Include="Classes\PizzaContext.cs" />
+    <Compile Include="Classes\SelectListFactory.cs" />
     <Compile Include="Controllers\Admin\AdminPanelMenuController.cs" />
     <Compile Include="Controllers\Admin\AdresController.cs" />
     <Compile Include="Controllers\Admin\CalisanController.cs" />
-    <Compile Include="Controllers\Admin\GununMenusuController.cs" />
     <Compile Include="Controllers\Admin\HakkimizdaController.cs" />
     <Compile Include="Controllers\Admin\HamurTipiController.cs" />
     <Compile Include="Controllers\Admin\IcecekBoyutController.cs" />
+    <Compile Include="Controllers\Admin\IcecekController.cs" />
     <Compile Include="Controllers\Admin\KampanyaController.cs" />
     <Compile Include="Controllers\Admin\KenarTipiController.cs" />
     <Compile Include="Controllers\Admin\KrediKartiController.cs" />
@@ -153,20 +157,17 @@
     <Compile Include="Controllers\Admin\KuponKoduController.cs" />
     <Compile Include="Controllers\Admin\MalzemeController.cs" />
     <Compile Include="Controllers\Admin\PizzaBoyutController.cs" />
+    <Compile Include="Controllers\Admin\PizzaController.cs" />
     <Compile Include="Controllers\Admin\ReklamController.cs" />
     <Compile Include="Controllers\Admin\ResimController.cs" />
-    <Compile Include="Controllers\Admin\SepetController.cs" />
     <Compile Include="Controllers\Admin\SiparisController.cs" />
     <Compile Include="Controllers\Admin\WebSiteController.cs" />
     <Compile Include="Controllers\Admin\YorumController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\Admin\TatliController.cs" />
-    <Compile Include="Controllers\Admin\UrunController.cs" />
     <Compile Include="Entities\AdminPanelMenu.cs" />
     <Compile Include="Entities\Adres.cs" />
     <Compile Include="Entities\Calisan.cs" />
     <Compile Include="Entities\Favori.cs" />
-    <Compile Include="Entities\GununMenusu.cs" />
     <Compile Include="Entities\Hakkimizda.cs" />
     <Compile Include="Entities\HamurTipi.cs" />
     <Compile Include="Entities\Icecek.cs" />
@@ -182,7 +183,6 @@
     <Compile Include="Entities\Resim.cs" />
     <Compile Include="Entities\Sepet.cs" />
     <Compile Include="Entities\Siparis.cs" />
-    <Compile Include="Entities\Tatli.cs" />
     <Compile Include="Entities\Urun.cs" />
     <Compile Include="Entities\WebSite.cs" />
     <Compile Include="Entities\Yorum.cs" />
@@ -193,9 +193,17 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201903281305053_DbFactoryEkleme.cs" />
-    <Compile Include="Migrations\201903281305053_DbFactoryEkleme.Designer.cs">
-      <DependentUpon>201903281305053_DbFactoryEkleme.cs</DependentUpon>
+    <Compile Include="Migrations\201904051309288_t.cs" />
+    <Compile Include="Migrations\201904051309288_t.Designer.cs">
+      <DependentUpon>201904051309288_t.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904051328242_t2.cs" />
+    <Compile Include="Migrations\201904051328242_t2.Designer.cs">
+      <DependentUpon>201904051328242_t2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904051334002_t3.cs" />
+    <Compile Include="Migrations\201904051334002_t3.Designer.cs">
+      <DependentUpon>201904051334002_t3.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminPanelMenuCreateModel.cs" />
@@ -204,14 +212,14 @@
     <Compile Include="Models\AdresUpdateListModel.cs" />
     <Compile Include="Models\CalisanCreateModel.cs" />
     <Compile Include="Models\CalisanUpdateListModel.cs" />
-    <Compile Include="Models\GununMenusuCreateModel.cs" />
-    <Compile Include="Models\GununMenusuUpdateListModel.cs" />
     <Compile Include="Models\HakkimizdaCreateModel.cs" />
     <Compile Include="Models\HakkimizdaUpdateLisModel.cs" />
     <Compile Include="Models\HamurTipiCreateModel.cs" />
     <Compile Include="Models\HamurTipiUpdateListModel.cs" />
     <Compile Include="Models\IcecekBoyutCreateModel.cs" />
     <Compile Include="Models\IcecekBoyutUpdateListModel.cs" />
+    <Compile Include="Models\IcecekCreateModel.cs" />
+    <Compile Include="Models\IcecekUpdateListModel.cs" />
     <Compile Include="Models\KampanyaCreateModel.cs" />
     <Compile Include="Models\KampanyaUpdateListModel.cs" />
     <Compile Include="Models\KenarTipiCreateModel.cs" />
@@ -226,6 +234,8 @@
     <Compile Include="Models\MalzemeUpdateListModel.cs" />
     <Compile Include="Models\PizzaBoyutCreateModel.cs" />
     <Compile Include="Models\PizzaBoyutUpdateListModel.cs" />
+    <Compile Include="Models\PizzaCreateModel.cs" />
+    <Compile Include="Models\PizzaUpdateListModel.cs" />
     <Compile Include="Models\ReklamCreateModel.cs" />
     <Compile Include="Models\ReklamUpdateListModel.cs" />
     <Compile Include="Models\ResimCreateModel.cs" />
@@ -243,6 +253,232 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\AnaTema\assets\assets\arrowleft.html" />
+    <Content Include="Content\AnaTema\assets\assets\arrowright.html" />
+    <Content Include="Content\AnaTema\assets\assets\arrow_left.html" />
+    <Content Include="Content\AnaTema\assets\assets\arrow_left2.html" />
+    <Content Include="Content\AnaTema\assets\assets\arrow_right.html" />
+    <Content Include="Content\AnaTema\assets\assets\arrow_right2.html" />
+    <Content Include="Content\AnaTema\assets\assets\boxed_bgtile.html" />
+    <Content Include="Content\AnaTema\assets\assets\bullet.html" />
+    <Content Include="Content\AnaTema\assets\assets\bullets.html" />
+    <Content Include="Content\AnaTema\assets\assets\bullets2.html" />
+    <Content Include="Content\AnaTema\assets\assets\bullet_boxed.html" />
+    <Content Include="Content\AnaTema\assets\assets\coloredbg.html" />
+    <Content Include="Content\AnaTema\assets\assets\gridtile.html" />
+    <Content Include="Content\AnaTema\assets\assets\gridtile_3x3.html" />
+    <Content Include="Content\AnaTema\assets\assets\gridtile_3x3_white.html" />
+    <Content Include="Content\AnaTema\assets\assets\gridtile_white.html" />
+    <Content Include="Content\AnaTema\assets\assets\icon.html" />
+    <Content Include="Content\AnaTema\assets\assets\large_left.html" />
+    <Content Include="Content\AnaTema\assets\assets\large_right.html" />
+    <Content Include="Content\AnaTema\assets\assets\navigdots.html" />
+    <Content Include="Content\AnaTema\assets\assets\navigdots_bgtile.html" />
+    <Content Include="Content\AnaTema\assets\assets\shadow1.html" />
+    <Content Include="Content\AnaTema\assets\assets\shadow2.html" />
+    <Content Include="Content\AnaTema\assets\assets\shadow3.html" />
+    <Content Include="Content\AnaTema\assets\assets\small_left.html" />
+    <Content Include="Content\AnaTema\assets\assets\small_left_boxed.html" />
+    <Content Include="Content\AnaTema\assets\assets\small_right.html" />
+    <Content Include="Content\AnaTema\assets\assets\small_right_boxed.html" />
+    <Content Include="Content\AnaTema\assets\fonts\fontawesome-webfont3e6e.html" />
+    <Content Include="Content\AnaTema\assets\fonts\glyphicons-halflings-regular-2.html" />
+    <Content Include="Content\AnaTema\assets\fonts\glyphicons-halflings-regular-3.html" />
+    <Content Include="Content\AnaTema\assets\fonts\glyphicons-halflings-regular-4.html" />
+    <Content Include="Content\AnaTema\assets\fonts\glyphicons-halflings-regular-5.html" />
+    <Content Include="Content\AnaTema\assets\fonts\glyphicons-halflings-regular.html" />
+    <Content Include="Content\AnaTema\assets\fonts\glyphicons-halflings-regulard41d.html" />
+    <Content Include="Content\AnaTema\assets\images\about_avatar_1.jpg" />
+    <Content Include="Content\AnaTema\assets\images\about_avatar_2.jpg" />
+    <Content Include="Content\AnaTema\assets\images\about_avatar_3.jpg" />
+    <Content Include="Content\AnaTema\assets\images\about_banner.jpg" />
+    <Content Include="Content\AnaTema\assets\images\account_banner_1.jpg" />
+    <Content Include="Content\AnaTema\assets\images\account_banner_2.jpg" />
+    <Content Include="Content\AnaTema\assets\images\banner-home-1.jpg" />
+    <Content Include="Content\AnaTema\assets\images\banner_product_1.jpg" />
+    <Content Include="Content\AnaTema\assets\images\banner_product_2.jpg" />
+    <Content Include="Content\AnaTema\assets\images\banner_product_3.jpg" />
+    <Content Include="Content\AnaTema\assets\images\banner_product_4.jpg" />
+    <Content Include="Content\AnaTema\assets\images\banslider-1.jpg" />
+    <Content Include="Content\AnaTema\assets\images\banslider-2.jpg" />
+    <Content Include="Content\AnaTema\assets\images\banslider-3.jpg" />
+    <Content Include="Content\AnaTema\assets\images\bg-newsletter.jpg" />
+    <Content Include="Content\AnaTema\assets\images\bg-pass.jpg" />
+    <Content Include="Content\AnaTema\assets\images\bg_addtocart_icon.png" />
+    <Content Include="Content\AnaTema\assets\images\bg_alert_failure_icon.png" />
+    <Content Include="Content\AnaTema\assets\images\bg_alert_notice_icon.png" />
+    <Content Include="Content\AnaTema\assets\images\bg_alert_success_icon.png" />
+    <Content Include="Content\AnaTema\assets\images\bg_check.html" />
+    <Content Include="Content\AnaTema\assets\images\bg_footer.png" />
+    <Content Include="Content\AnaTema\assets\images\bg_none_check.png" />
+    <Content Include="Content\AnaTema\assets\images\black.png" />
+    <Content Include="Content\AnaTema\assets\images\blog-01.jpg" />
+    <Content Include="Content\AnaTema\assets\images\blog-02.jpg" />
+    <Content Include="Content\AnaTema\assets\images\blog-03.jpg" />
+    <Content Include="Content\AnaTema\assets\images\blog-04.jpg" />
+    <Content Include="Content\AnaTema\assets\images\blog-05.jpg" />
+    <Content Include="Content\AnaTema\assets\images\blog-06.jpg" />
+    <Content Include="Content\AnaTema\assets\images\blog-07.jpg" />
+    <Content Include="Content\AnaTema\assets\images\blog-08.jpg" />
+    <Content Include="Content\AnaTema\assets\images\blog-09.jpg" />
+    <Content Include="Content\AnaTema\assets\images\blog_banner.png" />
+    <Content Include="Content\AnaTema\assets\images\blue.png" />
+    <Content Include="Content\AnaTema\assets\images\body_bg.png" />
+    <Content Include="Content\AnaTema\assets\images\brown.png" />
+    <Content Include="Content\AnaTema\assets\images\btn-left-pro.png" />
+    <Content Include="Content\AnaTema\assets\images\btn-left.png" />
+    <Content Include="Content\AnaTema\assets\images\btn-right-pro.png" />
+    <Content Include="Content\AnaTema\assets\images\btn-right.png" />
+    <Content Include="Content\AnaTema\assets\images\collections_1.jpg" />
+    <Content Include="Content\AnaTema\assets\images\collections_2.jpg" />
+    <Content Include="Content\AnaTema\assets\images\collections_3.jpg" />
+    <Content Include="Content\AnaTema\assets\images\collections_4.jpg" />
+    <Content Include="Content\AnaTema\assets\images\collections_5.jpg" />
+    <Content Include="Content\AnaTema\assets\images\collections_6.jpg" />
+    <Content Include="Content\AnaTema\assets\images\collections_banner.jpg" />
+    <Content Include="Content\AnaTema\assets\images\collections_banner_top.jpg" />
+    <Content Include="Content\AnaTema\assets\images\dot_contact.png" />
+    <Content Include="Content\AnaTema\assets\images\fancybox_loading%402x.html" />
+    <Content Include="Content\AnaTema\assets\images\fancybox_loading.html" />
+    <Content Include="Content\AnaTema\assets\images\fancybox_sprite%402x.html" />
+    <Content Include="Content\AnaTema\assets\images\fancybox_sprite.html" />
+    <Content Include="Content\AnaTema\assets\images\gallery-1-big.jpg" />
+    <Content Include="Content\AnaTema\assets\images\gallery-1.jpg" />
+    <Content Include="Content\AnaTema\assets\images\gallery-2-big.jpg" />
+    <Content Include="Content\AnaTema\assets\images\gallery-2.jpg" />
+    <Content Include="Content\AnaTema\assets\images\gallery-3-big.jpg" />
+    <Content Include="Content\AnaTema\assets\images\gallery-3.jpg" />
+    <Content Include="Content\AnaTema\assets\images\gallery-4-big.jpg" />
+    <Content Include="Content\AnaTema\assets\images\gallery-4.jpg" />
+    <Content Include="Content\AnaTema\assets\images\gallery-5-big.jpg" />
+    <Content Include="Content\AnaTema\assets\images\gallery-5.jpg" />
+    <Content Include="Content\AnaTema\assets\images\gallery-6-big.jpg" />
+    <Content Include="Content\AnaTema\assets\images\gallery-6.jpg" />
+    <Content Include="Content\AnaTema\assets\images\gradient\g30.html" />
+    <Content Include="Content\AnaTema\assets\images\gradient\g40.html" />
+    <Content Include="Content\AnaTema\assets\images\gray.png" />
+    <Content Include="Content\AnaTema\assets\images\green.png" />
+    <Content Include="Content\AnaTema\assets\images\line-btn.png" />
+    <Content Include="Content\AnaTema\assets\images\line-dot.png" />
+    <Content Include="Content\AnaTema\assets\images\list_payment.png" />
+    <Content Include="Content\AnaTema\assets\images\loader.gif" />
+    <Content Include="Content\AnaTema\assets\images\logo.png" />
+    <Content Include="Content\AnaTema\assets\images\logo_footer.png" />
+    <Content Include="Content\AnaTema\assets\images\lookbook_1.jpg" />
+    <Content Include="Content\AnaTema\assets\images\lookbook_2.jpg" />
+    <Content Include="Content\AnaTema\assets\images\lookbook_3.jpg" />
+    <Content Include="Content\AnaTema\assets\images\lookbook_4.jpg" />
+    <Content Include="Content\AnaTema\assets\images\lookbook_5.jpg" />
+    <Content Include="Content\AnaTema\assets\images\lookbook_6.jpg" />
+    <Content Include="Content\AnaTema\assets\images\newsletter-banner.png" />
+    <Content Include="Content\AnaTema\assets\images\orange.png" />
+    <Content Include="Content\AnaTema\assets\images\product_1.jpg" />
+    <Content Include="Content\AnaTema\assets\images\product_10.jpg" />
+    <Content Include="Content\AnaTema\assets\images\product_11.jpg" />
+    <Content Include="Content\AnaTema\assets\images\product_12.jpg" />
+    <Content Include="Content\AnaTema\assets\images\product_13.jpg" />
+    <Content Include="Content\AnaTema\assets\images\product_14.jpg" />
+    <Content Include="Content\AnaTema\assets\images\product_15.jpg" />
+    <Content Include="Content\AnaTema\assets\images\product_16.jpg" />
+    <Content Include="Content\AnaTema\assets\images\product_2.jpg" />
+    <Content Include="Content\AnaTema\assets\images\product_3.jpg" />
+    <Content Include="Content\AnaTema\assets\images\product_4.jpg" />
+    <Content Include="Content\AnaTema\assets\images\product_5.jpg" />
+    <Content Include="Content\AnaTema\assets\images\product_6.jpg" />
+    <Content Include="Content\AnaTema\assets\images\product_7.jpg" />
+    <Content Include="Content\AnaTema\assets\images\product_8.jpg" />
+    <Content Include="Content\AnaTema\assets\images\product_9.jpg" />
+    <Content Include="Content\AnaTema\assets\images\purple.png" />
+    <Content Include="Content\AnaTema\assets\images\red.png" />
+    <Content Include="Content\AnaTema\assets\images\round-border.png" />
+    <Content Include="Content\AnaTema\assets\images\silver.png" />
+    <Content Include="Content\AnaTema\assets\images\slideshow-caption-1.png" />
+    <Content Include="Content\AnaTema\assets\images\slideshow-caption-2.png" />
+    <Content Include="Content\AnaTema\assets\images\slideshow-caption-3.png" />
+    <Content Include="Content\AnaTema\assets\images\soldout.png" />
+    <Content Include="Content\AnaTema\assets\images\tp_caption_line1.png" />
+    <Content Include="Content\AnaTema\assets\images\yellow.png" />
+    <Content Include="Content\AnaTema\assets\javascripts\application-appear.js" />
+    <Content Include="Content\AnaTema\assets\javascripts\bootstrap.min.js" />
+    <Content Include="Content\AnaTema\assets\javascripts\classie.js" />
+    <Content Include="Content\AnaTema\assets\javascripts\cs.script.js" />
+    <Content Include="Content\AnaTema\assets\javascripts\jquery.currencies.min.js" />
+    <Content Include="Content\AnaTema\assets\javascripts\jquery.fancybox.js" />
+    <Content Include="Content\AnaTema\assets\javascripts\jquery.gmap.min.js" />
+    <Content Include="Content\AnaTema\assets\javascripts\jquery.min.js" />
+    <Content Include="Content\AnaTema\assets\javascripts\jquery.themepunch.plugins.min.js" />
+    <Content Include="Content\AnaTema\assets\javascripts\jquery.themepunch.revolution.min.js" />
+    <Content Include="Content\AnaTema\assets\javascripts\jquery.touchSwipe.min.js" />
+    <Content Include="Content\AnaTema\assets\javascripts\jquery.zoom.min.js" />
+    <Content Include="Content\AnaTema\assets\javascripts\linkOptionSelectors.js" />
+    <Content Include="Content\AnaTema\assets\javascripts\owl.carousel.min.js" />
+    <Content Include="Content\AnaTema\assets\javascripts\scripts.js" />
+    <Content Include="Content\AnaTema\assets\javascripts\social-buttons.js" />
+    <Content Include="Content\AnaTema\assets\stylesheets\bootstrap.min.css" />
+    <Content Include="Content\AnaTema\assets\stylesheets\cs.animate.css" />
+    <Content Include="Content\AnaTema\assets\stylesheets\cs.styles.css" />
+    <Content Include="Content\AnaTema\assets\stylesheets\font-awesome.min.css" />
+    <Content Include="Content\AnaTema\assets\stylesheets\font-icon.css" />
+    <Content Include="Content\AnaTema\assets\stylesheets\fonts.googleapis.css" />
+    <Content Include="Content\AnaTema\assets\stylesheets\grabbing.png" />
+    <Content Include="Content\AnaTema\assets\stylesheets\icon-font.min.css" />
+    <Content Include="Content\AnaTema\assets\stylesheets\jquery.fancybox.css" />
+    <Content Include="Content\AnaTema\assets\stylesheets\owl.carousel.min.css" />
+    <Content Include="Content\AnaTema\assets\stylesheets\slideshow-fade.css" />
+    <Content Include="Content\AnaTema\assets\stylesheets\social-buttons.css" />
+    <Content Include="Content\AnaTema\assets\stylesheets\spr.css" />
+    <Content Include="Content\AnaTema\assets\stylesheets\themepunch.revolution.css" />
+    <Content Include="Content\AnaTema\cdn.linearicons.com\free\1.0.0\icon-font.min.css" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\files\1_3e7313a2-24ef-4dea-b4f4-19a75f8b51fa.png" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\files\1_83ead4e7-aea5-4e9d-9434-4955aa4586dc.jpg" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\files\2_65174602-c41e-437a-a443-b1ec72838027.jpg" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\files\3_57dfffef-f4a7-4ff0-b03e-05e67769bafc.jpg" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\files\bn1_53149ef0-f92a-4804-b600-02e903aa4559.png" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\animations.css" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\arrowleft.html" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\arrowright.html" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\arrow_left.html" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\arrow_left2.html" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\arrow_right.html" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\arrow_right2.html" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\blank0d9a.html" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\boxed_bgtile.html" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\bullet.html" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\bullets.html" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\bullets2.html" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\bullet_boxed.html" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\coloredbg.html" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\cs.animate.css" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\fancybox_loading0d9a.gif" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\fancybox_sprite%402x0d9a.png" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\fancybox_sprite0d9a.png" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\grabbing.png" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\gridtile.html" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\gridtile_3x3.html" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\gridtile_3x3_white.html" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\gridtile_white.html" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\icon.html" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\jquery.fancybox.scss.css" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\large_left.html" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\large_right.html" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\loader.gif" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\navigdots.html" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\navigdots_bgtile.html" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\owl.carousel.css" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\shadow1.html" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\shadow2.html" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\shadow3.html" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\slideshow-fade.css" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\small_left.html" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\small_left_boxed.html" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\small_right.html" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\small_right_boxed.html" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\social-buttons.scss.css" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\assets\themepunch.revolution.css" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\images\gradient\g30.html" />
+    <Content Include="Content\AnaTema\cdn.shopify.com\s\files\1\2487\3424\t\3\images\gradient\g40.html" />
+    <Content Include="Content\AnaTema\maxcdn.bootstrapcdn.com\bootstrap\3.3.4\css\bootstrap.min.css" />
+    <Content Include="Content\AnaTema\maxcdn.bootstrapcdn.com\font-awesome\4.7.0\css\font-awesome.min.css" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -1975,6 +2211,21 @@
     <Content Include="Content\vendor\fontawesome-free\webfonts\fa-solid-900.woff2" />
     <Content Include="Content\vendor\jquery\jquery.min.map" />
     <Content Include="Content\vendor\jquery\jquery.slim.min.map" />
+    <Content Include="Content\AnaTema\assets\fonts\cs-font.eot" />
+    <Content Include="Content\AnaTema\assets\fonts\cs-font.svg" />
+    <Content Include="Content\AnaTema\assets\fonts\cs-font.ttf" />
+    <Content Include="Content\AnaTema\assets\fonts\cs-font.woff" />
+    <Content Include="Content\AnaTema\assets\fonts\fontawesome-webfont3e6e.eot" />
+    <Content Include="Content\AnaTema\assets\fonts\fontawesome-webfont3e6e.svg" />
+    <Content Include="Content\AnaTema\assets\fonts\fontawesome-webfont3e6e.ttf" />
+    <Content Include="Content\AnaTema\assets\fonts\fontawesome-webfont3e6e.woff" />
+    <Content Include="Content\AnaTema\assets\fonts\fontawesome-webfontd41d.eot" />
+    <Content Include="Content\AnaTema\assets\fonts\icons.eot" />
+    <Content Include="Content\AnaTema\assets\fonts\icons.svg" />
+    <Content Include="Content\AnaTema\assets\fonts\icons.ttf" />
+    <Content Include="Content\AnaTema\assets\fonts\icons.woff" />
+    <Content Include="Content\AnaTema\assets\images\ico-select.svg" />
+    <Content Include="Content\AnaTema\cdn.linearicons.com\free\1.0.0\Linearicons-Free.eot" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -2018,10 +2269,6 @@
     <Content Include="Views\Calisan\Details.cshtml" />
     <Content Include="Views\Calisan\Create.cshtml" />
     <Content Include="Views\Calisan\Edit.cshtml" />
-    <Content Include="Views\GununMenusu\Index.cshtml" />
-    <Content Include="Views\GununMenusu\Details.cshtml" />
-    <Content Include="Views\GununMenusu\Create.cshtml" />
-    <Content Include="Views\GununMenusu\Edit.cshtml" />
     <Content Include="Views\Hakkimizda\Index.cshtml" />
     <Content Include="Views\Hakkimizda\Details.cshtml" />
     <Content Include="Views\Hakkimizda\Create.cshtml" />
@@ -2062,33 +2309,27 @@
     <Content Include="Views\Reklam\Edit.cshtml" />
     <Content Include="Views\Reklam\Details.cshtml" />
     <Content Include="Views\Resim\Index.cshtml" />
-    <Content Include="Views\Resim\Details.cshtml" />
-    <Content Include="Views\Resim\Create.cshtml" />
-    <Content Include="Views\Resim\Edit.cshtml" />
-    <Content Include="Views\Sepet\Index.cshtml" />
-    <Content Include="Views\Sepet\Details.cshtml" />
-    <Content Include="Views\Sepet\Create.cshtml" />
-    <Content Include="Views\Sepet\Edit.cshtml" />
     <Content Include="Views\Siparis\Index.cshtml" />
     <Content Include="Views\Siparis\Details.cshtml" />
-    <Content Include="Views\Siparis\Create.cshtml" />
-    <Content Include="Views\Siparis\Edit.cshtml" />
-    <Content Include="Views\Urun\Index.cshtml" />
-    <Content Include="Views\Urun\Details.cshtml" />
-    <Content Include="Views\Urun\Create.cshtml" />
-    <Content Include="Views\Urun\Edit.cshtml" />
     <Content Include="Views\WebSite\Index.cshtml" />
     <Content Include="Views\WebSite\Details.cshtml" />
     <Content Include="Views\WebSite\Create.cshtml" />
     <Content Include="Views\WebSite\Edit.cshtml" />
     <Content Include="Views\Yorum\Index.cshtml" />
-    <Content Include="Views\Yorum\Details.cshtml" />
-    <Content Include="Views\Yorum\Create.cshtml" />
-    <Content Include="Views\Yorum\Edit.cshtml" />
+    <Content Include="Views\Pizza\Index.cshtml" />
+    <Content Include="Views\Pizza\Details.cshtml" />
+    <Content Include="Views\Pizza\Create.cshtml" />
+    <Content Include="Views\Pizza\Edit.cshtml" />
+    <Content Include="Views\Icecek\Index.cshtml" />
+    <Content Include="Views\Icecek\Details.cshtml" />
+    <Content Include="Views\Icecek\Create.cshtml" />
+    <Content Include="Views\Icecek\Edit.cshtml" />
+    <Content Include="Views\Shared\_MainLayout.cshtml" />
+    <Content Include="Views\PizzaBoyut\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Tatli\" />
+    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -2105,8 +2346,14 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201903281305053_DbFactoryEkleme.resx">
-      <DependentUpon>201903281305053_DbFactoryEkleme.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904051309288_t.resx">
+      <DependentUpon>201904051309288_t.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904051328242_t2.resx">
+      <DependentUpon>201904051328242_t2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904051334002_t3.resx">
+      <DependentUpon>201904051334002_t3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

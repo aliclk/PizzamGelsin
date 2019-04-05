@@ -37,10 +37,10 @@ namespace PizzamGelsin.Controllers.Admin
             {
                 Reklam reklam = new Reklam();
                 reklam.ReklamLink = rcm.ReklamLink;
-
-                reklam.Resim = new Resim { Url = Server.MapPath("~/classes/m.jpg") };
+                string serverPath = Server.MapPath("~/Images/" + Guid.NewGuid().ToString() + ".png");
+                reklam.Resim = new Resim { Url = serverPath };
                 var t = DbFactory.ReklamCrud.Insert(reklam);
-               // file.SaveAs(Server.MapPath("~/classes/m.jpg"));
+                file.SaveAs(serverPath);
                 return RedirectToAction("Index");
             }
             catch

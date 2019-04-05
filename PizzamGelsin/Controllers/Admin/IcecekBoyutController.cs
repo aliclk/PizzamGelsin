@@ -37,10 +37,10 @@ namespace PizzamGelsin.Controllers.Admin
             {
                 IcecekBoyut icecekBoyut = new IcecekBoyut();
                 icecekBoyut.Boyut = ibcm.Boyut;
-                
-                icecekBoyut.Resim = new Resim { Url = Server.MapPath("~/classes/m.jpg") };
+                string serverPath = Server.MapPath("~/Images/" + Guid.NewGuid().ToString() + ".png");
+                icecekBoyut.Resim = new Resim { Url = serverPath };
                 var t = DbFactory.IcecekBoyutCrud.Insert(icecekBoyut);
-                //file.SaveAs(Server.MapPath("~/classes/m.jpg"));
+                file.SaveAs(serverPath);
                 return RedirectToAction("Index");
             }
             catch

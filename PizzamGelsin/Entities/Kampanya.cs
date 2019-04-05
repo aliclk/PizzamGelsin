@@ -16,11 +16,11 @@ namespace PizzamGelsin.Entities
         [Required]
         [MaxLength(100)]
         public string KampanyaAdi { get; set; }
-        public List<Urun> Urunler { get; set; }
+        public Pizza Pizza { get; set; }
+        public Icecek Icecek { get; set; }
 
         public Kampanya()
         {
-            Urunler = new List<Urun>();
         }
     }
 }

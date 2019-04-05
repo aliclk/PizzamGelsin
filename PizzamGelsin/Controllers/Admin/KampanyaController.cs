@@ -38,7 +38,8 @@ namespace PizzamGelsin.Controllers.Admin
                 Kampanya kampanya = new Kampanya();
                 kampanya.Fiyat = kcm.Fiyat;
                 kampanya.KampanyaAdi = kcm.KampanyaAdi;
-                kampanya.Urunler = kcm.Urunler;
+                kampanya.Pizza = DbFactory.PizzaCrud.Records.FirstOrDefault(x=>x.UrunAdi==kcm.Pizza.UrunAdi);
+                kampanya.Icecek = DbFactory.IcecekCrud.Records.FirstOrDefault(x => x.UrunAdi == kcm.Icecek.UrunAdi);
                 DbFactory.KampanyaCrud.Insert(kampanya);               
                 return RedirectToAction("Index");
             }
@@ -64,7 +65,8 @@ namespace PizzamGelsin.Controllers.Admin
                 Kampanya currentkampanya = DbFactory.KampanyaCrud.Find(id);
                 currentkampanya.Fiyat = kulm.Fiyat;
                 currentkampanya.KampanyaAdi = kulm.KampanyaAdi;
-                currentkampanya.Urunler = kulm.Urunler;
+                currentkampanya.Pizza = kulm.Pizza;
+                currentkampanya.Icecek = kulm.Icecek;
 
                 DbFactory.KampanyaCrud.Update(id, currentkampanya);
 

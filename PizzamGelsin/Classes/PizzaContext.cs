@@ -25,7 +25,6 @@ namespace PizzamGelsin.Classes
         public virtual DbSet<Adres> Adres { get; set; }
         public virtual DbSet<Calisan> Calisan { get; set; }
         public virtual DbSet<Favori> Favori { get; set; }
-        public virtual DbSet<GununMenusu> GununMenusu { get; set; }
         public virtual DbSet<Hakkimizda> Hakkimizda { get; set; }
         public virtual DbSet<HamurTipi> HamurTipi { get; set; }
         public virtual DbSet<Icecek> Icecek { get; set; }
@@ -41,7 +40,6 @@ namespace PizzamGelsin.Classes
         public virtual DbSet<Resim> Resim { get; set; }
         public virtual DbSet<Sepet> Sepet { get; set; }
         public virtual DbSet<Siparis> Siparis { get; set; }
-        public virtual DbSet<Tatli> Tatli { get; set; }
         public virtual DbSet<Urun> Urun { get; set; }
         public virtual DbSet<WebSite> WebSite { get; set; }
         public virtual DbSet<Yorum> Yorum { get; set; }
