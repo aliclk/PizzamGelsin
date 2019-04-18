@@ -40,8 +40,8 @@ namespace PizzamGelsin.Controllers.Admin
                 
                
                 var t = DbFactory.PizzaBoyutCrud.Insert(pizzaboyut);
-                
 
+                TempData["sweetalert"] = "<script>swal('Eklendi','Pizza Boyutu" + " Eklendi', 'success');" + "</script>";
                 return RedirectToAction("Index");
             }
             catch
@@ -67,7 +67,7 @@ namespace PizzamGelsin.Controllers.Admin
                 
 
                 DbFactory.PizzaBoyutCrud.Update(id, currentpizzaboyut);
-
+                TempData["sweetalert"] = "<script>swal('Güncellendi','Pizza Boyutu" + " Güncellendi', 'success');" + "</script>";
                 return RedirectToAction("Index");
             }
             catch
@@ -80,6 +80,7 @@ namespace PizzamGelsin.Controllers.Admin
         public ActionResult Delete(string id)
         {
             DbFactory.PizzaBoyutCrud.Delete(id);
+            TempData["sweetalert"] = "<script>swal('Silindi','Pizza Boyutu" + " Silindi', 'success');" + "</script>";
             return RedirectToAction("Index");
         }
 

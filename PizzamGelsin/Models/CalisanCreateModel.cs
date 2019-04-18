@@ -9,6 +9,7 @@ namespace PizzamGelsin.Models
     public class CalisanCreateModel
     {
         [Display(Name = "Adı")]
+        [Required]
         public string Adi { get; set; }
         [Display(Name = "Özgeçmiş")]
         public string Ozgecmis { get; set; }

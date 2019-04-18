@@ -1,11 +1,10 @@
 ﻿@model PizzamGelsin.Models.CalisanCreateModel
-
-@using (Html.BeginForm("Create", "Calisan", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "Calisan", FormMethod.Post, new { enctype = "multipart/form-data" ,id = "create-form"}))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>CalisanCreateModel</h4>
+        <h4>Çalışan Ekle</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -15,7 +14,6 @@
                 @Html.ValidationMessageFor(model => model.Adi, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.Ozgecmis, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -23,7 +21,6 @@
                 @Html.ValidationMessageFor(model => model.Ozgecmis, "", new { @class = "text-danger" })
             </div>
         </div>
-
         <div class="form-group">
             @Html.LabelFor(model => model.Unvan, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -32,23 +29,17 @@
             </div>
         </div>
         <div class="form-group">
-            @Html.LabelFor(model => model.ResimURL, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.ResimURL, htmlAttributes: new { @class = "control-label col-md-4" })
             <div class="col-md-10">
                 <input name="file" id="file" type="file" class="form-control" accept="image/*" />
                 @Html.ValidationMessageFor(model => model.ResimURL, "", new { @class = "text-danger" })
             </div>
         </div>
 
-
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Ekle" class="btn btn-dark" />
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>

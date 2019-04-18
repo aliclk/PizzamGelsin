@@ -18,7 +18,6 @@ namespace PizzamGelsin
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
-            DbFactory.ResimCrud.CheckConnection();
 
         }
     }

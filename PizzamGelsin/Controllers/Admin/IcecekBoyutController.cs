@@ -40,6 +40,7 @@ namespace PizzamGelsin.Controllers.Admin
                 string serverPath = Server.MapPath("~/Images/" + Guid.NewGuid().ToString() + ".png");
                 icecekBoyut.Resim = new Resim { Url = serverPath };
                 var t = DbFactory.IcecekBoyutCrud.Insert(icecekBoyut);
+                TempData["sweetalert"] = "<script>swal('Eklendi','İçeçek Boyutu" + " Eklendi', 'success');" + "</script>";
                 file.SaveAs(serverPath);
                 return RedirectToAction("Index");
             }
@@ -63,9 +64,9 @@ namespace PizzamGelsin.Controllers.Admin
             {
                 IcecekBoyut currenticecekBoyut = DbFactory.IcecekBoyutCrud.Find(id);
                 currenticecekBoyut.Boyut = ibulm.Boyut;
-               
-                //currenticecekBoyut.Resim = new Resim { Url = Server.MapPath("~/classes/m.jpg") };
 
+                //currenticecekBoyut.Resim = new Resim { Url = Server.MapPath("~/classes/m.jpg") };
+                TempData["sweetalert"] = "<script>swal('Güncellendi','İçecek Boyutu" + " Güncellendi', 'success');" + "</script>";
                 DbFactory.IcecekBoyutCrud.Update(id, currenticecekBoyut);
 
                 return RedirectToAction("Index");
@@ -80,6 +81,7 @@ namespace PizzamGelsin.Controllers.Admin
         public ActionResult Delete(string id)
         {
             DbFactory.IcecekBoyutCrud.Delete(id);
+            TempData["sweetalert"] = "<script>swal('Silindi','İçecek Boyutu" + " Silindi', 'success');" + "</script>";
             return RedirectToAction("Index");
         }
 

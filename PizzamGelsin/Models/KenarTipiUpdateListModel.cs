@@ -20,7 +20,7 @@ namespace PizzamGelsin.Models
         public static List<KenarTipiUpdateListModel> GetList()
         {
             List<KenarTipiUpdateListModel> returnList = new List<KenarTipiUpdateListModel>();
-            foreach (var kenartipi in DbFactory.KenarTipi.Records)
+            foreach (var kenartipi in DbFactory.KenarTipiCrud.Records)
             {
                 KenarTipiUpdateListModel ktulm = new KenarTipiUpdateListModel();
                 ktulm.KenarTipiUpdateListModelID = kenartipi.ID;

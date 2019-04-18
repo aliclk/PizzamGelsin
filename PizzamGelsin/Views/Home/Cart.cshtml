@@ -1,0 +1,130 @@
+﻿@model IEnumerable<PizzamGelsin.Models.CartModel>
+
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+
+    PizzamGelsin.Entities.Pizza currentPizza = null;
+}
+<link href="~/Content/vendor/fontawesome-free/css/fontawesome.min.css" rel="stylesheet" />
+<style>
+    table {
+        margin-top: 2%;
+    }
+
+    thead {
+        background-color: #f7f1e9;
+        border: 1px solid #dbcebd;
+    }
+
+        thead th {
+            padding-left: 0;
+            padding: 8px;
+        }
+
+    th:first-child {
+        width: 25%;
+    }
+
+    th:nth-child(3) {
+        width: 20%;
+    }
+
+    ._btn {
+        padding: 16px;
+        width: auto;
+        background-color: #8d785b;
+        border-color: #8d785b;
+        color: white;
+        cursor: pointer;
+    }
+
+        ._btn:hover {
+            background-color: #9d1414;
+            border-color: #9d1414;
+            color: white;
+        }
+       
+</style>
+<link href="~/Content/Product.css" rel="stylesheet" />
+<section class="cart-content">
+    <div class="cart-wrapper">
+        <div class="container">
+            <div class="row">
+                <div id="shopify-section-cart-template" class="shopify-section">
+                    <div class="cart-inner">
+                        <div id="cart">
+                            <div class="cart-form">
+                                <form>
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>Product</th>
+                                                <th>Price</th>
+                                                <th>Quantity</th>
+                                                <th>Total</th>
+                                                <th>Remove</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var item in Model)
+                                            {
+                                                <input type="hidden" value='@(currentPizza = PizzamGelsin.Classes.DbFactory.PizzaCrud.Find(item.PizzaId))' />
+
+                                                <tr style="padding-top:5%;">
+                                                    <td>
+                                                        <img src="@currentPizza.UrunResimleri.FirstOrDefault().Url" alt="Juice Ice Tea" width="200px" height="200px">
+
+                                                        @currentPizza.UrunAdi
+
+                                                    </td>
+                                                    <td class="price">
+                                                        <span class="money" data-currency-usd="$20.00">@currentPizza.UrunFiyat $</span>
+
+                                                    </td>
+
+                                                    
+                                                    <td>
+                                                        <input type="text" size="4" name="updates[]" value="@item.Adet" class="tc item-quantity">
+
+                                                    </td>
+                                                    <td class="total title-1"><span class="money" data-currency-usd="$20.00">@(currentPizza.UrunFiyat * item.Adet)</span></td>
+
+                                                    <td class="remove" style="padding-left:25px; font-size:24px;"><a href="#" class="cart"><span class="lnr lnr-trash"></span></a></td>
+                                                </tr>
+
+
+                                            }
+
+                                        </tbody>
+                                    </table>
+                                </form>
+                                <div class="group-button" style="display:inline-flex; flex-direction:row;width:100%;
+margin:1%">
+                                    <a href="collections.html" class="_btn">Continue Shopping</a>
+                                    <div class="moveLeft" style="display:inline-flex; flex-direction:row-reverse;">
+                                       
+                                        <input type="button" class="_btn clearAllCart" value="Clear all" style="margin-left:15px;">
+                                        <input type="submit" id="update-cart" class="_btn" name="update" value="Update cart">
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                    $(window).ready(function ($) {
+                        $(".quantity-mobile input").change(function () {
+                            var qty = $(this).val();
+                            $(this).parents('tr').find('.item-quantity').val(qty);
+                        });
+                    });
+                </script>
+            </div>
+        </div>
+    </div>
+
+</section>

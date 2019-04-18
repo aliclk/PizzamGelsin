@@ -40,7 +40,7 @@ namespace PizzamGelsin.Controllers.Admin
                 kuponkodu.KuponKod = kkcm.KuponKod;
                 kuponkodu.Value = kkcm.Value;
                 var t = DbFactory.KuponKoduCrud.Insert(kuponkodu);
-                
+                TempData["sweetalert"] = "<script>swal('Eklendi','Kupon Kodu" + " Eklendi', 'success');" + "</script>";
                 return RedirectToAction("Index");
             }
             catch
@@ -67,7 +67,7 @@ namespace PizzamGelsin.Controllers.Admin
                 currentkuponkodu.Value = kkulm.Value;
 
                 DbFactory.KuponKoduCrud.Update(id, currentkuponkodu);
-
+                TempData["sweetalert"] = "<script>swal('Güncellendi','Kupon Kodu" + " Güncellendi', 'success');" + "</script>";
                 return RedirectToAction("Index"); ;
             }
             catch
@@ -80,6 +80,7 @@ namespace PizzamGelsin.Controllers.Admin
         public ActionResult Delete(string id)
         {
             DbFactory.KuponKoduCrud.Delete(id);
+            TempData["sweetalert"] = "<script>swal('Silindi','Kupon Kodu" + " Silindi', 'success');" + "</script>";
             return RedirectToAction("Index");
         }
 

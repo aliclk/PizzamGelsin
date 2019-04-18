@@ -39,6 +39,7 @@ namespace PizzamGelsin.Controllers.Admin
                 adres.Adi = acm.Adi;
                 adres.AdresIcerik = acm.AdresIcerik;
                 var t=DbFactory.AdresCrud.Insert(adres);
+                TempData["sweetalert"] = "<script>swal('Eklendi','Adres" + " Eklendi', 'success');" + "</script>";
                 return RedirectToAction("Index");
             }
             catch
@@ -64,7 +65,7 @@ namespace PizzamGelsin.Controllers.Admin
                 currentadres.AdresIcerik = aulm.AdresIcerik;
                 
                 DbFactory.AdresCrud.Update(id, currentadres);
-
+                TempData["sweetalert"] = "<script>swal('Güncellendi','Adres" + " Güncellendi', 'success');" + "</script>";
                 return RedirectToAction("Index");
             }
             catch
@@ -77,6 +78,7 @@ namespace PizzamGelsin.Controllers.Admin
         public ActionResult Delete(string id)
         {
             DbFactory.AdresCrud.Delete(id);
+            TempData["sweetalert"] = "<script>swal('Silindi','Adres" + " Silindi', 'success');" + "</script>";
             return RedirectToAction("Index");
         }
 

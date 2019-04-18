@@ -1,0 +1,109 @@
+﻿@model IEnumerable<PizzamGelsin.Models.UrunUpdateListModel>
+
+@{
+    ViewBag.Title = "Urunler";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<div class="collection-items clearfix">
+    <div class="products">
+        @foreach (var urun in Model)
+        {
+            <div class="product-item col-sm-4 ">
+                <div class="product product-circle">
+                    <div class="row-left">
+                        <a href='@Url.Action("Product","Home",new { id=urun.UrunUpdateListModelID})' class="hoverBorder container_item">
+                            <div class="hoverBorderWrapper">
+                                <img class="img-responsive front" src="@urun.UrunResimleri.FirstOrDefault().Url" alt="@urun.UrunAdi" />
+                                <div class="mask"></div>
+                            </div>
+                        </a>
+                        <div class="product-label">
+                            <div class="label-element deal-label">
+                                <span>%0</span>
+                            </div>
+                        </div>
+                        <div class="hover-mask grid-mode">
+                            <div class="group-mask">
+                                <div class="inner-mask">
+                                    <div class="group-actionbutton">
+                                        <ul class="quickview-wishlist-wrapper">
+                                            <li class="wishlist">
+                        <a title="Add To Wishlist" class="wishlist wishlist-cheese-burger-1" href="#">
+                                                <span class="cs-icon icon-heart"></span></a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-right animMix">
+                        <div class="grid-mode">
+                            <div class="rating-star">
+                                <span class="spr-badge" data-rating="5.0">
+                                    <span class="spr-starrating spr-badge-starrating"><i class="spr-icon spr-icon-star" style=""></i><i class="spr-icon spr-icon-star" style=""></i><i class="spr-icon spr-icon-star" style=""></i><i class="spr-icon spr-icon-star" style=""></i><i class="spr-icon spr-icon-star" style=""></i></span><span class="spr-badge-caption">1 review</span>
+                                </span>
+                            </div>
+                            <div class="product-title"><a class="title-5" href='@Url.Action("Product","Home",new { id=urun.UrunUpdateListModelID})'>@urun.UrunAdi</a></div>
+                            <div class="product-price">
+                                <span class="price_sale"><span class="money" data-currency-usd="$10.00" data-currency="USD">$@urun.UrunFiyat</span></span>
+                                <del class="price_compare"> <span class="money" data-currency-usd="$15.00" data-currency="USD">$@(urun.UrunFiyat+5)</span></del>
+                            </div>
+                        </div>
+                        <div class="list-mode hide">
+                            <div class="list-collection-left">
+                                <div class="group">
+                                    <div class="product-title"><a class="title-5" href='@Url.Action("Product","Home",new { id=urun.UrunUpdateListModelID})'>@urun.UrunAdi</a></div>
+                                    <div class="rating-star">
+                                        <span class="spr-badge" data-rating="5.0">
+                                            <span class="spr-starrating spr-badge-starrating"><i class="spr-icon spr-icon-star" style=""></i><i class="spr-icon spr-icon-star" style=""></i><i class="spr-icon spr-icon-star" style=""></i><i class="spr-icon spr-icon-star" style=""></i><i class="spr-icon spr-icon-star" style=""></i></span><span class="spr-badge-caption">1 review</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="product-price">
+                                    <span class="price_sale"><span class="money" data-currency-usd="$10.00" data-currency="USD">$@urun.UrunFiyat</span></span>
+                                    <del class="price_compare"> <span class="money" data-currency-usd="$15.00" data-currency="USD">$@(urun.UrunFiyat + 5)</span></del>
+                                </div>
+                            </div>
+                            <div class="list-collection-right">
+                                <div class="product-description">
+                                    @urun.UrunAciklama
+                                </div>
+                                <div class="group-actionbutton">
+                                    <form class="product-addtocart" action="http://demo.designshopify.com/html_fastfood/cart.html" method="post">
+                                        <div class="effect-ajax-cart">
+                                            <input type="hidden" name="quantity" value="1">
+                                            <button class="_btn select-option" type="button" onclick="window.location='http://demo.designshopify.com/products/cheese-burger-1';" title="Select Option"><span class="cart-title">Select options</span></button>
+                                        </div>
+                                    </form>
+                                    <ul class="quickview-wishlist-wrapper">
+                                        <li class="wishlist">
+                                            <a title="Add To Wishlist" class="wishlist wishlist-cheese-burger-1" data-wishlisthandle="cheese-burger-1">
+                                                <span class="cs-icon icon-heart" title="Wishlist"></span>
+                                            </a>
+                                        </li>
+                                        <li class="product-quickview quickview hidden-xs hidden-sm">
+                                            <div class="product-ajax-cart ">
+                                                <span class="overlay_mask"></span>
+                                                <div data-handle="cheese-burger-1" data-target="#quick-shop-modal" class="quick_shop" data-toggle="modal">
+                                                    <a class="quick-view">
+                                                        <span class="cs-icon icon-eye" title="Quick View"></span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li class="compare">
+                                            <a title="Add To Compare" class="compare compare-cheese-burger-1" data-comparehandle="cheese-burger-1">
+                                                <span class="cs-icon icon-retweet2" title="Compare"></span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

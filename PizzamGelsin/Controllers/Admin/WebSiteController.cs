@@ -40,7 +40,8 @@ namespace PizzamGelsin.Controllers.Admin
                 string serverPath = Server.MapPath("~/Images/" + Guid.NewGuid().ToString() + ".png");
                 website.Logo = new Resim { Url = serverPath };
                 DbFactory.WebSiteCrud.Insert(website);
-              file.SaveAs(serverPath);
+                TempData["sweetalert"] = "<script>swal('Eklendi','Web Site" + " Eklendi', 'success');" + "</script>";
+                file.SaveAs(serverPath);
                 return RedirectToAction("Index");
             }
             catch
@@ -65,8 +66,8 @@ namespace PizzamGelsin.Controllers.Admin
                 currentwebsite.WebAdi = wbulm.WebAdi;
                 //currentwebsite.Logo.Url = wbulm.LogoUrl;
                 currentwebsite.Logo = new Resim { Url = Server.MapPath("~/classes/m.jpg") };
-               
 
+                TempData["sweetalert"] = "<script>swal('Güncellendi','Web Site" + " Güncellendi', 'success');" + "</script>";
                 DbFactory.WebSiteCrud.Update(id, currentwebsite);
 
                 return RedirectToAction("Index");
@@ -81,6 +82,7 @@ namespace PizzamGelsin.Controllers.Admin
         public ActionResult Delete(string id)
         {
             DbFactory.WebSiteCrud.Delete(id);
+            TempData["sweetalert"] = "<script>swal('Silindi','Web Site" + " Silindi', 'success');" + "</script>";
             return RedirectToAction("Index");
         }
 

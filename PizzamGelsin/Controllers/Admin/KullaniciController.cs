@@ -48,7 +48,7 @@ namespace PizzamGelsin.Controllers.Admin
                 kullanici.Soyadi = kcm.Soyadi;
                 kullanici.KullaniciTipi = kcm.KullaniciTipi;
 
-
+                TempData["sweetalert"] = "<script>swal('Eklendi','Kullanıcı" + " Eklendi', 'success');" + "</script>";
                 DbFactory.KullaniciCrud.Insert(kullanici);
                 
                 return RedirectToAction("Index");
@@ -84,6 +84,7 @@ namespace PizzamGelsin.Controllers.Admin
                 currentkullanici.Soyadi = kulm.Soyadi;
                 currentkullanici.KullaniciTipi = kulm.KullaniciTipi;
 
+                TempData["sweetalert"] = "<script>swal('Güncellendi','Kullanıcı" + " Güncellendi', 'success');" + "</script>";
                 DbFactory.KullaniciCrud.Update(id, currentkullanici);
 
                 return RedirectToAction("Index");
@@ -98,6 +99,7 @@ namespace PizzamGelsin.Controllers.Admin
         public ActionResult Delete(string id)
         {
             DbFactory.KullaniciCrud.Delete(id);
+            TempData["sweetalert"] = "<script>swal('Silindi','Kullanıcı" + " Silindi', 'success');" + "</script>";
             return RedirectToAction("Index");
         }
 

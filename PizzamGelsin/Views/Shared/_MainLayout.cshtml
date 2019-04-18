@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    var currentFooter = PizzamGelsin.Classes.DbFactory.FooterCrud.Records.FirstOrDefault();
+}
+<!DOCTYPE html>
 <!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
 <!--[if (gt IE 9)|!(IE)]><!-->
 <html lang="en" class="no-js">
@@ -37,27 +40,11 @@
     <link href="~/Content/AnaTema/cdn.shopify.com/s/files/1/2487/3424/t/3/assets/themepunch.revolution.css" rel="stylesheet" />
     <link href="~/Content/AnaTema/cdn.shopify.com/s/files/1/2487/3424/t/3/assets/jquery.fancybox.scss.css" rel="stylesheet" />
     <link href="~/Content/AnaTema/cdn.shopify.com/s/files/1/2487/3424/t/3/assets/animations.css" rel="stylesheet" />
-    <script src="~/Content/AnaTema/assets/javascripts/jquery.min.js"></script>
-    <script src="~/Content/AnaTema/assets/javascripts/classie.js"></script>
-    <script src="~/Content/AnaTema/assets/javascripts/application-appear.js"></script>
-    <script src="~/Content/AnaTema/assets/javascripts/jquery.themepunch.plugins.min.js"></script>
-    <script src="~/Content/AnaTema/assets/javascripts/jquery.themepunch.revolution.min.js"></script>
-    <script src="~/Content/AnaTema/assets/javascripts/cs.script.js"></script>
-    <script src="~/Content/AnaTema/assets/javascripts/jquery.currencies.min.js"></script>
-    <script src="~/Content/AnaTema/assets/javascripts/jquery.zoom.min.js"></script>
-    <script src="~/Content/AnaTema/assets/javascripts/linkOptionSelectors.js"></script>
-    <script src="~/Content/AnaTema/assets/javascripts/owl.carousel.min.js"></script>
-    <script src="~/Content/AnaTema/assets/javascripts/scripts.js"></script>
-    <script src="~/Content/AnaTema/assets/javascripts/social-buttons.js"></script>
-    <script src="~/Content/AnaTema/assets/javascripts/bootstrap.min.js"></script>
-    <script src="~/Content/AnaTema/assets/javascripts/jquery.touchSwipe.min.js"></script>
-    <script src="~/Content/AnaTema/assets/javascripts/jquery.fancybox.js"></script>
-
+    
 
 </head>
 
 <body class="index-template  fastfood_1">
-
     <!--Header-->
     <header id="top" class="header clearfix">
         <div id="shopify-section-theme-header" class="shopify-section">
@@ -647,14 +634,12 @@
         </div>
     </header>
     <div class="fix-sticky"></div>
-
     <!-- Main Content -->
     <div class="page-container" id="PageContainer">
         <main class="main-content" id="MainContent" role="main">
             @RenderBody()
         </main>
     </div>
-
     <!-- Footer -->
     <footer class="footer">
         <div id="shopify-section-theme-footer" class="shopify-section">
@@ -669,19 +654,19 @@
                                             <img src="assets/images/logo_footer.png" alt="" />
                                         </div>
                                         <div class="about-caption">
-                                            Skort Maison Martin Margiela knot ponytail cami texture tucked t-shirt. Black skirt razor pleats plaited gold collar.
+                                            @currentFooter.Aciklama
                                             <div class="clearfix" style="margin-bottom: 5px; "></div>
-                                            Crop 90s spearmint indigo seam luxe washed out. Prada Saffiano cash mere crop sneaker chignon
+
                                         </div>
                                         <div class="about-contact">
                                             <div class="item">
-                                                <span class="cs-icon icon-marker"></span><address>No 1104 Sky Tower, Las Vegas, USA</address>
+                                                <span class="cs-icon icon-marker"></span><address>@currentFooter.Adres</address>
                                             </div>
                                             <div class="item">
-                                                <span class="cs-icon icon-phone"></span><a href="tel:(084)0123456789">(084) 0123 456 789</a>
+                                                <span class="cs-icon icon-phone"></span><a href="tel:(084)0123456789">@currentFooter.Telefon</a>
                                             </div>
                                             <div class="item">
-                                                <span class="cs-icon icon-mail"></span><a href="mailto:contac@yourcompany.com">contac@yourcompany.com</a>
+                                                <span class="cs-icon icon-mail"></span><a href="mailto:@currentFooter.EMail">@currentFooter.EMail</a>
                                             </div>
                                         </div>
                                     </div>
@@ -728,12 +713,12 @@
                                     <h5 class="footer-title"> Follow Us</h5>
                                     <div class="social-content">
                                         <div class="social-caption">
-                                            <a href="https://www.facebook.com/shopify" title="Fast Food on Facebook" class="icon-social facebook"><i class="fa fa-facebook"></i></a>
-                                            <a href="https://twitter.com/shopify" title="Fast Food on Twitter" class="icon-social twitter"><i class="fa fa-twitter"></i></a>
-                                            <a href="https://plus.google.com/+shopify" title="Fast Food on Google+" class="icon-social google-plus"><i class="fa fa-google-plus"></i></a>
-                                            <a href="https://www.pinterest.com/shopify" title="Fast Food on Pinterest" class="icon-social pinterest"><i class="fa fa-pinterest"></i></a>
-                                            <a href="https://instagram.com/shopify" title="Fast Food on Instagram" class="icon-social instagram"><i class="fa fa-instagram"></i></a>
-                                            <a href="https://www.youtube.com/user/shopify" title="Fast Food on Youtube" class="icon-social youtube"><i class="fa fa-youtube"></i></a>
+                                            <a href="@currentFooter.FacebookAdres" title="Fast Food on Facebook" class="icon-social facebook"><i class="fa fa-facebook"></i></a>
+                                            <a href="@currentFooter.TwitterAdres" title="Fast Food on Twitter" class="icon-social twitter"><i class="fa fa-twitter"></i></a>
+                                            <a href="@currentFooter.GooglePlusAdres" title="Fast Food on Google+" class="icon-social google-plus"><i class="fa fa-google-plus"></i></a>
+                                            <a href="@currentFooter.PinterestAdres" title="Fast Food on Pinterest" class="icon-social pinterest"><i class="fa fa-pinterest"></i></a>
+                                            <a href="@currentFooter.InstagramAdres" title="Fast Food on Instagram" class="icon-social instagram"><i class="fa fa-instagram"></i></a>
+                                            <a href="@currentFooter.YoutubeAdres" title="Fast Food on Youtube" class="icon-social youtube"><i class="fa fa-youtube"></i></a>
                                         </div>
                                     </div>
                                     <div class="payment-content ">
@@ -775,7 +760,6 @@
             </section>
         </div>
     </footer>
-
     <!-- Modal QuickView -->
     <div id="quick-shop-modal" class="modal quick-shop" role="dialog" aria-hidden="true" tabindex="-1" data-width="800" style="display: none;">
         <div class="modal-dialog fadeIn animated">
@@ -930,7 +914,6 @@
             </div>
         </div>
     </div>
-
     <!-- Modal WishList -->
     <div class="wishlist-model">
         <div class="modal fade" id="modalwishlist1" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
@@ -985,7 +968,6 @@
             </div>
         </div>
     </div>
-
     <!-- Modal Compare -->
     <div class="wishlist-model">
         <div class="modal fade" id="modalCompare" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
@@ -1041,33 +1023,8 @@
         </div>
     </div>
 
-    <!-- Modal Newsletter-->
-    <div id="newsletter-popup" class="modal fade in" style="display: block; padding-right: 15px;" tabindex="-1" role="dialog" aria-hidden="false">
-        <div class="nl-wraper-popup bounceInDown animated">
-            <div class="nl-wraper-popup-inner">
-                <div class="popup-left">
-                    <h4>Newsletter!</h4>
-                    <p class="sale">up to 70% off</p>
-                    <p class="caption">Food</p>
-                    <form action="https://codespot.us5.list-manage.com/subscribe/post?u=ed73bc2d2f8ae97778246702e&amp;id=c63b4d644d" method="post" name="mc-embedded-subscribe-form" target="_blank">
-                        <div class="group_input">
-                            <input class="form-control" type="email" name="EMAIL" placeholder="Enter your email here">
-                            <button class="_btn" type="submit">Sign Up</button>
-                        </div>
-                    </form>
-                </div>
-                <div class="popup-right">
-                    <img src="assets/images/newsletter-banner.png" alt="">
-                </div>
-            </div>
-            <div class="nl-popup-close" onclick="$('#newsletter-popup').modal('hide')">
-                <span data-dismiss="modal"></span>
-            </div>
-        </div>
-    </div>
-
     <!-- Modal Search-->
-    <div class="modal fade" id="lightbox-search" tabindex="-1" role="dialog" aria-labelledby="lightbox-search" aria-hidden="true" style="display: none;">
+    <div class="modal fade" id="lightbox-search" tabindex="-1" role="dialog" aria-labelledby="lightbox-search" a-hidden="true" style="display: none;">
         <div class="modal-dialog animated" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -1091,7 +1048,6 @@
             </div>
         </div>
     </div>
-
     <!-- Float right icon -->
     <div class="float-right-icon">
         <ul>
@@ -1103,4 +1059,20 @@
         </ul>
     </div>
 
+    <script src="~/Content/AnaTema/assets/javascripts/jquery.min.js"></script>
+    <script src="~/Content/AnaTema/assets/javascripts/classie.js"></script>
+    <script src="~/Content/AnaTema/assets/javascripts/application-appear.js"></script>
+    <script src="~/Content/AnaTema/assets/javascripts/jquery.themepunch.plugins.min.js"></script>
+    <script src="~/Content/AnaTema/assets/javascripts/jquery.themepunch.revolution.min.js"></script>
+    <script src="~/Content/AnaTema/assets/javascripts/cs.script.js"></script>
+    <script src="~/Content/AnaTema/assets/javascripts/jquery.currencies.min.js"></script>
+    <script src="~/Content/AnaTema/assets/javascripts/jquery.zoom.min.js"></script>
+    <script src="~/Content/AnaTema/assets/javascripts/linkOptionSelectors.js"></script>
+    <script src="~/Content/AnaTema/assets/javascripts/owl.carousel.min.js"></script>
+    <script src="~/Content/AnaTema/assets/javascripts/scripts.js"></script>
+    <script src="~/Content/AnaTema/assets/javascripts/social-buttons.js"></script>
+    <script src="~/Content/AnaTema/assets/javascripts/bootstrap.min.js"></script>
+    <script src="~/Content/AnaTema/assets/javascripts/jquery.touchSwipe.min.js"></script>
+    <script src="~/Content/AnaTema/assets/javascripts/jquery.fancybox.js"></script>
+   
 </body>

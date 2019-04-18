@@ -79,6 +79,7 @@ namespace PizzamGelsin.Controllers.Admin
         public ActionResult Delete(string id)
         {
             DbFactory.YorumCrud.Delete(id);
+            TempData["sweetalert"] = "<script>swal('Silindi','Yorum" + " Silindi', 'success');" + "</script>";
             return RedirectToAction("Index");
         }
     }

@@ -148,7 +148,7 @@ namespace PizzamGelsin.Classes
 
         private static volatile GenelCrud<KenarTipi> _kenarTipiCrud = null;
 
-        public static GenelCrud<KenarTipi> KenarTipi
+        public static GenelCrud<KenarTipi> KenarTipiCrud
         {
             get
             {
@@ -354,6 +354,20 @@ namespace PizzamGelsin.Classes
                     _yorumCrud.CheckConnection();
                 }
                 return _yorumCrud;
+            }
+        }
+        private static volatile GenelCrud<Footer> _footerCrud = null;
+
+        public static GenelCrud<Footer> FooterCrud
+        {
+            get
+            {
+                if (_footerCrud == null)
+                {
+                    _footerCrud = new GenelCrud<Footer>(_db, _db.Footer);
+                    _footerCrud.CheckConnection();
+                }
+                return _footerCrud;
             }
         }
     }

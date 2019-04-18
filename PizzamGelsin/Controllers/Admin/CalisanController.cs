@@ -39,6 +39,7 @@ namespace PizzamGelsin.Controllers.Admin
                 calisan.Adi = ccm.Adi;
                 calisan.Ozgecmis = ccm.Ozgecmis;
                 calisan.Unvan = ccm.Unvan;
+                TempData["sweetalert"] = "<script>swal('Eklendi','Çalışan" + " Eklendi', 'success');" + "</script>";
 
                 string serverPath = Server.MapPath("~/Images/"+Guid.NewGuid().ToString()+".png");
                 calisan.Resim = new Resim { Url = serverPath };
@@ -69,7 +70,7 @@ namespace PizzamGelsin.Controllers.Admin
                 currentcalisan.Ozgecmis = culm.Ozgecmis;
                 currentcalisan.Unvan = culm.Unvan; ;
                 currentcalisan.Resim = new Resim { Url = Server.MapPath("~/classes/m.jpg") };
-
+                TempData["sweetalert"] = "<script>swal('Güncellendi','Çalışan" + " Güncellendi', 'success');" + "</script>";
                 DbFactory.CalisanCrud.Update(id, currentcalisan);
 
                 return RedirectToAction("Index");
@@ -84,6 +85,7 @@ namespace PizzamGelsin.Controllers.Admin
         public ActionResult Delete(string id)
         {
             DbFactory.CalisanCrud.Delete(id);
+            TempData["sweetalert"] = "<script>swal('Silindi','Çalışan" + " Silindi', 'success');" + "</script>";
             return RedirectToAction("Index");
         }
     }

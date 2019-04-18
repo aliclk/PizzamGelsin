@@ -40,6 +40,7 @@ namespace PizzamGelsin.Controllers.Admin
                 kampanya.KampanyaAdi = kcm.KampanyaAdi;
                 kampanya.Pizza = DbFactory.PizzaCrud.Records.FirstOrDefault(x=>x.UrunAdi==kcm.Pizza.UrunAdi);
                 kampanya.Icecek = DbFactory.IcecekCrud.Records.FirstOrDefault(x => x.UrunAdi == kcm.Icecek.UrunAdi);
+                TempData["sweetalert"] = "<script>swal('Eklendi','Kampanya" + " Eklendi', 'success');" + "</script>";
                 DbFactory.KampanyaCrud.Insert(kampanya);               
                 return RedirectToAction("Index");
             }
@@ -69,6 +70,7 @@ namespace PizzamGelsin.Controllers.Admin
                 currentkampanya.Icecek = kulm.Icecek;
 
                 DbFactory.KampanyaCrud.Update(id, currentkampanya);
+                TempData["sweetalert"] = "<script>swal('Güncellendi','Kampanya" + " Güncellendi', 'success');" + "</script>";
 
                 return RedirectToAction("Index");
             }
@@ -82,6 +84,7 @@ namespace PizzamGelsin.Controllers.Admin
         public ActionResult Delete(string id)
         {
             DbFactory.KampanyaCrud.Delete(id);
+            TempData["sweetalert"] = "<script>swal('Silindi','Kampanya" + " Silindi', 'success');" + "</script>";
             return RedirectToAction("Index");
         }
   

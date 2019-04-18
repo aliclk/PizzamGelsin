@@ -40,6 +40,7 @@ namespace PizzamGelsin.Controllers.Admin
                 string serverPath = Server.MapPath("~/Images/" + Guid.NewGuid().ToString() + ".png");
                 reklam.Resim = new Resim { Url = serverPath };
                 var t = DbFactory.ReklamCrud.Insert(reklam);
+                TempData["sweetalert"] = "<script>swal('Eklendi','Reklam" + " Eklendi', 'success');" + "</script>";
                 file.SaveAs(serverPath);
                 return RedirectToAction("Index");
             }
@@ -61,11 +62,12 @@ namespace PizzamGelsin.Controllers.Admin
         {
             try
             {
-                Reklam currentreklam = new Reklam();
+                Reklam currentreklam = DbFactory.ReklamCrud.Find(id);
                 currentreklam.ReklamLink = rulm.ReklamLink;
 
                 currentreklam.Resim = new Resim { Url = Server.MapPath("~/classes/m.jpg") };
                 var t = DbFactory.ReklamCrud.Insert(currentreklam);
+                TempData["sweetalert"] = "<script>swal('Güncellendi','Reklam" + " Güncellendi', 'success');" + "</script>";
                 // file.SaveAs(Server.MapPath("~/classes/m.jpg"));
                 return RedirectToAction("Index");
             }
@@ -79,6 +81,7 @@ namespace PizzamGelsin.Controllers.Admin
         public ActionResult Delete(string id)
         {
             DbFactory.ReklamCrud.Delete(id);
+            TempData["sweetalert"] = "<script>swal('Silindi','Reklam" + " Silindi', 'success');" + "</script>";
             return RedirectToAction("Index");
         }
 

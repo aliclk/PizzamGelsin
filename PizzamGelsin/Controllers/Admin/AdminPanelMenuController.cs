@@ -39,6 +39,7 @@ namespace PizzamGelsin.Controllers.Admin
                 adminpanelmenu.Adi = apmcm.Adi;
                 adminpanelmenu.Url = apmcm.Url;
                 DbFactory.AdminPanelMenuCrud.Insert(adminpanelmenu);
+                TempData["sweetalert"] = "<script>swal('Eklendi','Admin Panel Menü " + " Eklendi', 'success');" + "</script>";
                 return RedirectToAction("Index");
             }
             catch
@@ -64,7 +65,7 @@ namespace PizzamGelsin.Controllers.Admin
                 currentadminpanelmenu.Url = apmulm.Url;
 
                 DbFactory.AdminPanelMenuCrud.Update(id, currentadminpanelmenu);
-
+                TempData["sweetalert"] = "<script>swal('Güncellendi','Admin Panel Menü " + " Güncellendi', 'success');" + "</script>";
                 return RedirectToAction("Index");
             }
             catch
@@ -77,6 +78,7 @@ namespace PizzamGelsin.Controllers.Admin
         public ActionResult Delete(string id)
         {
             DbFactory.AdminPanelMenuCrud.Delete(id);
+            TempData["sweetalert"] = "<script>swal('Silindi','Admin Panel Menü " + " Silindi', 'success');" + "</script>";
             return RedirectToAction("Index");
         }
 

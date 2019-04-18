@@ -1,4 +1,6 @@
-﻿using System;
+﻿using PizzamGelsin.Classes;
+using PizzamGelsin.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -25,6 +27,34 @@ namespace PizzamGelsin.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult Urunler()
+        {
+            return View(UrunUpdateListModel.Getlist());
+        }
+        public ActionResult Product(string id)
+        {
+            return View(UrunUpdateListModel.Getlist().FirstOrDefault(x=>x.UrunUpdateListModelID==id));
+        }
+        [HttpPost]
+        public ActionResult SepeteEkle(CartModel cartModel)
+        {
+            return RedirectToAction("Cart");
+        }
+        public ActionResult Cart()
+        {
+            CartModel cm = new CartModel();
+            cm.PizzaId = DbFactory.PizzaCrud.Records.First().ID;
+            cm.Adet = 3;
+            List<CartModel> cmlist = new List<CartModel>();
+            cmlist.Add(cm);
+            cmlist.Add(cm);
+            cmlist.Add(cm);
+            cmlist.Add(cm);
+            cmlist.Add(cm);
+            cmlist.Add(cm);
+            return View(cmlist);
         }
     }
 }

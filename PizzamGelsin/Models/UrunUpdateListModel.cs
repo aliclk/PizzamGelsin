@@ -3,6 +3,7 @@ using PizzamGelsin.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Odbc;
 using System.Linq;
 using System.Web;
 
@@ -26,24 +27,24 @@ namespace PizzamGelsin.Models
         [Display(Name = "Ürün Yıldız")]
         public int Yildiz { get; set; }
 
-        //    public static List<UrunUpdateListModel> GetList()
-        //    {
-        //        List<UrunUpdateListModel> returnList = new List<UrunUpdateListModel>();
-        //        foreach (var urun in DbFactory.UrunCrud.Records)
-        //        {
-        //            UrunUpdateListModel uulm = new UrunUpdateListModel();
-        //            uulm.UrunUpdateListModelID = urun.ID;
-        //            uulm.UrunAdi = urun.UrunAdi;
-        //            uulm.UrunFiyat = urun.UrunFiyat;
-        //            uulm.UrunAciklama = urun.UrunAciklama;
-        //            uulm.UrunAdet = urun.UrunAdet;
-        //            uulm.UrunResimleri = urun.UrunResimleri;
-        //            uulm.AlinmaAdedi = urun.AlinmaAdedi;
-        //            uulm.Yildiz = urun.Yildiz;
+        public static List<UrunUpdateListModel> Getlist()
+        {
+            List<UrunUpdateListModel> returnlist = new List<UrunUpdateListModel>();
+            foreach (var urun in DbFactory.UrunCrud.Records)
+            {
+                UrunUpdateListModel uulm = new UrunUpdateListModel();
+                uulm.UrunUpdateListModelID = urun.ID;
+                uulm.UrunAdi = urun.UrunAdi;
+                uulm.UrunFiyat = urun.UrunFiyat;
+                uulm.UrunAciklama = urun.UrunAciklama;
+                uulm.UrunAdet = urun.UrunAdet;
+                uulm.UrunResimleri = urun.UrunResimleri;
+                uulm.AlinmaAdedi = urun.AlinmaAdedi;
+                uulm.Yildiz = urun.Yildiz;
 
-        //            returnList.Add(uulm);
-        //        }
-        //        return returnList;
-        //    }
+                returnlist.Add(uulm);
+            }
+            return returnlist;
+        }
     }
 }

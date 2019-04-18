@@ -141,18 +141,19 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Classes\DbFactory.cs" />
+    <Compile Include="Classes\ModelBinders\PizzaModelBinder.cs" />
     <Compile Include="Classes\PizzaContext.cs" />
     <Compile Include="Classes\SelectListFactory.cs" />
     <Compile Include="Controllers\Admin\AdminPanelMenuController.cs" />
     <Compile Include="Controllers\Admin\AdresController.cs" />
     <Compile Include="Controllers\Admin\CalisanController.cs" />
+    <Compile Include="Controllers\Admin\FooterController.cs" />
     <Compile Include="Controllers\Admin\HakkimizdaController.cs" />
     <Compile Include="Controllers\Admin\HamurTipiController.cs" />
     <Compile Include="Controllers\Admin\IcecekBoyutController.cs" />
     <Compile Include="Controllers\Admin\IcecekController.cs" />
     <Compile Include="Controllers\Admin\KampanyaController.cs" />
     <Compile Include="Controllers\Admin\KenarTipiController.cs" />
-    <Compile Include="Controllers\Admin\KrediKartiController.cs" />
     <Compile Include="Controllers\Admin\KullaniciController.cs" />
     <Compile Include="Controllers\Admin\KuponKoduController.cs" />
     <Compile Include="Controllers\Admin\MalzemeController.cs" />
@@ -168,6 +169,7 @@
     <Compile Include="Entities\Adres.cs" />
     <Compile Include="Entities\Calisan.cs" />
     <Compile Include="Entities\Favori.cs" />
+    <Compile Include="Entities\Footer.cs" />
     <Compile Include="Entities\Hakkimizda.cs" />
     <Compile Include="Entities\HamurTipi.cs" />
     <Compile Include="Entities\Icecek.cs" />
@@ -187,8 +189,11 @@
     <Compile Include="Entities\WebSite.cs" />
     <Compile Include="Entities\Yorum.cs" />
     <Compile Include="Entities\PizzaBoyut.cs" />
+    <Compile Include="Enums\HamurTipi.cs" />
     <Compile Include="Enums\IndirimTuru.cs" />
+    <Compile Include="Enums\Kenartipi.cs" />
     <Compile Include="Enums\KullaniciTipi.cs" />
+    <Compile Include="Enums\PizzaBoyut.cs" />
     <Compile Include="Enums\SiparisDurumu.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -205,6 +210,14 @@
     <Compile Include="Migrations\201904051334002_t3.Designer.cs">
       <DependentUpon>201904051334002_t3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904081347253_Footer.cs" />
+    <Compile Include="Migrations\201904081347253_Footer.Designer.cs">
+      <DependentUpon>201904081347253_Footer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904081350197_Footerduzgunoldu.cs" />
+    <Compile Include="Migrations\201904081350197_Footerduzgunoldu.Designer.cs">
+      <DependentUpon>201904081350197_Footerduzgunoldu.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AdminPanelMenuCreateModel.cs" />
     <Compile Include="Models\AdminPanelMenuUpdateListModel.cs" />
@@ -212,6 +225,9 @@
     <Compile Include="Models\AdresUpdateListModel.cs" />
     <Compile Include="Models\CalisanCreateModel.cs" />
     <Compile Include="Models\CalisanUpdateListModel.cs" />
+    <Compile Include="Models\CartModel.cs" />
+    <Compile Include="Models\FooterCreateModel.cs" />
+    <Compile Include="Models\FooterUpdateListModel.cs" />
     <Compile Include="Models\HakkimizdaCreateModel.cs" />
     <Compile Include="Models\HakkimizdaUpdateLisModel.cs" />
     <Compile Include="Models\HamurTipiCreateModel.cs" />
@@ -491,6 +507,7 @@
     <Content Include="Content\js\demo\datatables-demo.js" />
     <Content Include="Content\js\sb-admin-2.js" />
     <Content Include="Content\js\sb-admin-2.min.js" />
+    <Content Include="Content\Product.css" />
     <Content Include="Content\vendor\bootstrap\js\bootstrap.bundle.js" />
     <Content Include="Content\vendor\bootstrap\js\bootstrap.bundle.min.js" />
     <Content Include="Content\vendor\bootstrap\js\bootstrap.js" />
@@ -542,6 +559,21 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\03e297b6-0de4-41f4-be13-7fae0c98fe5e.png" />
+    <Content Include="Images\39f1df9b-4aa9-439c-858c-0462f739c0b4.png" />
+    <Content Include="Images\3a8b5fcc-b281-4fda-b6d0-95be62f7d062.png" />
+    <Content Include="Images\3e4439de-fc4b-499e-b5c6-5dbc0151ee28.png" />
+    <Content Include="Images\485c5436-2f5d-46fe-afe0-b782e1fe5d03.png" />
+    <Content Include="Images\61a43ba8-54da-420c-a046-2b0b966a0325.png" />
+    <Content Include="Images\6770a0520d284b4b8e661eca893172ea.png" />
+    <Content Include="Images\6bdb8f92-5252-4e64-a436-75d672f5d947.png" />
+    <Content Include="Images\7a89d64a-ef22-4b24-bb4e-2e945c1dde7d.png" />
+    <Content Include="Images\85d371b6-1a2e-439c-9082-f49fdd6b5b05.png" />
+    <Content Include="Images\8b7f3c24-dffa-45cc-8e43-ff87f90096c5.png" />
+    <Content Include="Images\d70d3aa5-8e74-4e75-aeb1-424dd67e5006.png" />
+    <Content Include="Images\ed258f9ffff44664977957abfc322937.png" />
+    <Content Include="Images\efb36b9d1ddc4ac7967f2480d4c1032f.png" />
+    <Content Include="Images\f66cfd77-8bda-4502-92a1-b57b28ca9fc8.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Content\img\undraw_posting_photo.svg" />
@@ -2283,10 +2315,6 @@
     <Content Include="Views\Kampanya\Edit.cshtml" />
     <Content Include="Views\KenarTipi\Index.cshtml" />
     <Content Include="Views\KenarTipi\Create.cshtml" />
-    <Content Include="Views\KrediKarti\Index.cshtml" />
-    <Content Include="Views\KrediKarti\Details.cshtml" />
-    <Content Include="Views\KrediKarti\Create.cshtml" />
-    <Content Include="Views\KrediKarti\Edit.cshtml" />
     <Content Include="Views\KenarTipi\Edit.cshtml" />
     <Content Include="Views\KenarTipi\Details.cshtml" />
     <Content Include="Views\Kullanici\Index.cshtml" />
@@ -2326,10 +2354,16 @@
     <Content Include="Views\Icecek\Edit.cshtml" />
     <Content Include="Views\Shared\_MainLayout.cshtml" />
     <Content Include="Views\PizzaBoyut\Details.cshtml" />
+    <Content Include="Views\Footer\Index.cshtml" />
+    <Content Include="Views\Footer\Details.cshtml" />
+    <Content Include="Views\Footer\Create.cshtml" />
+    <Content Include="Views\Footer\Edit.cshtml" />
+    <Content Include="Views\Home\Urunler.cshtml" />
+    <Content Include="Views\Home\Product.cshtml" />
+    <Content Include="Views\Home\Cart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Images\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -2354,6 +2388,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904051334002_t3.resx">
       <DependentUpon>201904051334002_t3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904081347253_Footer.resx">
+      <DependentUpon>201904081347253_Footer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904081350197_Footerduzgunoldu.resx">
+      <DependentUpon>201904081350197_Footerduzgunoldu.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -39,9 +39,9 @@ namespace PizzamGelsin.Controllers.Admin
 
                 foreach (var image in images)
                 {
-                    string serverPath = Server.MapPath("~/Images/" + Guid.NewGuid().ToString() + ".png");
+                    string serverPath = "/Images/" + Guid.NewGuid().ToString() + ".png";
                     pizza.UrunResimleri.Add(new Resim { Url = serverPath });
-                    image.SaveAs(serverPath);
+                    image.SaveAs(Server.MapPath(serverPath));
 
                 }
                 pizza.AlinmaAdedi = pcm.AlinmaAdedi;
@@ -54,7 +54,7 @@ namespace PizzamGelsin.Controllers.Admin
                 pizza.UrunAdi = pcm.UrunAdi;
                 pizza.UrunFiyat = pcm.UrunFiyat;
                 pizza.Yildiz = pcm.Yildiz;
-
+                TempData["sweetalert"] = "<script>swal('Eklendi','Pizza" + " Eklendi', 'success');" + "</script>";
                 DbFactory.PizzaCrud.Insert(pizza);
 
                 return RedirectToAction("Index");
@@ -91,7 +91,7 @@ namespace PizzamGelsin.Controllers.Admin
                 currentpizza.Yildiz = pulm.Yildiz;
 
                 DbFactory.PizzaCrud.Update(id, currentpizza);
-
+                TempData["sweetalert"] = "<script>swal('Güncellendi','Pizza" + " Güncellendi', 'success');" + "</script>";
                 return RedirectToAction("Index");
             }
             catch
@@ -104,6 +104,7 @@ namespace PizzamGelsin.Controllers.Admin
         public ActionResult Delete(string id)
         {
             DbFactory.PizzaCrud.Delete(id);
+            TempData["sweetalert"] = "<script>swal('Silindi','Pizza" + " Silindi', 'success');" + "</script>";
             return RedirectToAction("Index");
         }
     }

@@ -21,7 +21,7 @@ namespace PizzamGelsin.Controllers.Admin
         // GET: Icecek/Details/5
         public ActionResult Details(string id)
         {
-            return PartialView(IcecekUpdateListModel.GetList().FirstOrDefault(x => x.IcecekUpdateListModelId == id));
+            return PartialView(IcecekUpdateListModel.GetList().FirstOrDefault(x => x.UrunUpdateListModelID == id));
         }
 
         // GET: Icecek/Create
@@ -39,9 +39,9 @@ namespace PizzamGelsin.Controllers.Admin
                 Icecek icecek = new Icecek();
                 foreach (var image in images)
                 {
-                    string serverPath = Server.MapPath("~/Images/" + Guid.NewGuid().ToString().Replace("-","") + ".png");
+                    string serverPath ="/Images/" + Guid.NewGuid().ToString().Replace("-","") + ".png";
                     icecek.UrunResimleri.Add(new Resim { Url = serverPath });
-                    image.SaveAs(serverPath);
+                    image.SaveAs(Server.MapPath(serverPath));
 
                 }
                // icecek.Icecekboyutlar = iulm.Icecekboyutlar;
@@ -52,7 +52,8 @@ namespace PizzamGelsin.Controllers.Admin
                 icecek.UrunAdi = iulm.UrunAdi;
                 icecek.UrunFiyat = iulm.UrunFiyat;
                 icecek.Yildiz = iulm.Yildiz;
-                
+                TempData["sweetalert"] = "<script>swal('Eklendi','İçecek" + " Eklendi', 'success');" + "</script>";
+
 
                 DbFactory.IcecekCrud.Insert(icecek);
 
@@ -67,13 +68,11 @@ namespace PizzamGelsin.Controllers.Admin
         // GET: Icecek/Edit/5
         public ActionResult Edit(string id)
         {
-            return PartialView(IcecekUpdateListModel.GetList().FirstOrDefault(x => x.IcecekUpdateListModelId == id));
+            return PartialView(IcecekUpdateListModel.GetList().FirstOrDefault(x => x.UrunUpdateListModelID == id));
         }
 
         // POST: Icecek/Edit/5
         [HttpPost]
-
-
         public ActionResult Edit(string id, IcecekUpdateListModel iulm)
         {
             try
@@ -88,12 +87,12 @@ namespace PizzamGelsin.Controllers.Admin
                 //}
                 icecek.Icecekboyutlar = iulm.Icecekboyutlar;
                 icecek.AlinmaAdedi = iulm.AlinmaAdedi;
-
                 icecek.UrunAciklama = iulm.UrunAciklama;
                 icecek.UrunAdet = iulm.UrunAdet;
                 icecek.UrunAdi = iulm.UrunAdi;
                 icecek.UrunFiyat = iulm.UrunFiyat;
                 icecek.Yildiz = iulm.Yildiz;
+                TempData["sweetalert"] = "<script>swal('Güncellendi','İçecek" + " Güncellendi', 'success');" + "</script>";
 
                 DbFactory.IcecekCrud.Update(id,icecek);
 
@@ -110,6 +109,7 @@ namespace PizzamGelsin.Controllers.Admin
         {
             DbFactory.UrunCrud.Delete(id);
             DbFactory.IcecekCrud.Delete(id);
+            TempData["sweetalert"] = "<script>swal('Silindi','İçecek" + " Silindi', 'success');" + "</script>";
             return RedirectToAction("Index");
         }
 

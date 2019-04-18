@@ -41,6 +41,7 @@ namespace PizzamGelsin.Controllers.Admin
                 string serverPath = Server.MapPath("~/Images/" + Guid.NewGuid().ToString() + ".png");
                 hamurtipi.Resim = new Resim { Url = serverPath };
                 var t = DbFactory.HamurTipiCrud.Insert(hamurtipi);
+                TempData["sweetalert"] = "<script>swal('Eklendi','Hamur Tipi" + " Eklendi', 'success');" + "</script>";
                 file.SaveAs(serverPath);
                 return RedirectToAction("Index");
             }
@@ -68,7 +69,7 @@ namespace PizzamGelsin.Controllers.Admin
                 currenthamurtipi.Resim = new Resim { Url = Server.MapPath("~/classes/m.jpg") };
                 
                 DbFactory.HamurTipiCrud.Update(id, currenthamurtipi);
-
+                TempData["sweetalert"] = "<script>swal('Güncellendi','Hamur Tipi" + " Güncellendi', 'success');" + "</script>";
                 return RedirectToAction("Index");
             }
             catch
@@ -81,6 +82,7 @@ namespace PizzamGelsin.Controllers.Admin
         public ActionResult Delete(string id)
         {
             DbFactory.HamurTipiCrud.Delete(id);
+            TempData["sweetalert"] = "<script>swal('Silindi','Hamur Tipi" + " Silindi', 'success');" + "</script>";
             return RedirectToAction("Index");
         }
     }

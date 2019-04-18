@@ -1,0 +1,335 @@
+﻿@model PizzamGelsin.Models.UrunUpdateListModel
+
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<link rel="stylesheet" href="~/Content/Product.css" />
+<main class="main-content productMain" id="MainContent" role="main">
+    <section class="product-detail-layout">
+        <div class="product-detail-wrapper">
+            <div class="container">
+                <div class="row">
+                    <div id="shopify-section-product-template" class="shopify-section">
+                        <div class="product-detail-inner" itemscope="" itemtype="http://schema.org/Product">
+                            <meta itemprop="name" content="Extra Crispy">
+                            <meta itemprop="image" content="./assets/images/product_10.jpg">
+                            <div class="product-detail-content col-sm-9">
+                                <div id="product" class="extra-crispy-1 detail-content">
+                                    <div class="col-md-12 info-detail-pro clearfix">
+                                        <div class="col-md-6" id="product-image">
+                                            <div id="featuted-image" class="image featured" style="width:400px; height:400px;">
+                                                <span style="display: inline-block; max-width: 100%; position: relative; overflow: hidden;">
+                                                    <img src="@Model.UrunResimleri.FirstOrDefault().Url" alt="" style="display: block;width:400px; height:420px; ">
+                                                </span>
+                                            </div>
+                                            <div id="featuted-image-mobile" class="image featured-mobile owl-carousel owl-theme" style="display: block; opacity: 0;">
+                                                <div class="owl-wrapper-outer">
+                                                    <div class="owl-wrapper" style="width: 800px; left: 0px; display: block;">
+                                                        <div class="owl-item" style="width: 100px;">
+                                                            <div class="image-item">
+                                                                <a href="#" class="thumbnail" data-toggle="modal" data-target="#lightbox">
+                                                                    <img src="@Model.UrunResimleri.FirstOrDefault().Url" alt="Extra Crispy" data-item="1">
+                                                                </a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6" id="product-information">
+                                            <h1 itemprop="name" class="title">@Model.UrunAdi</h1>
+                                            <div class="rating-content">
+                                                <div class="rating-description">
+                                                    <span class="spr-badge" data-rating="5.0">
+                                                        <span class="spr-starrating spr-badge-starrating">
+                                                            <i class="spr-icon spr-icon-star" style=""></i>
+                                                            <i class="spr-icon spr-icon-star" style=""></i>
+                                                            <i class="spr-icon spr-icon-star" style=""></i>
+                                                            <i class="spr-icon spr-icon-star" style=""></i><i class="spr-icon spr-icon-star" style=""></i>
+                                                        </span>
+                                                        <span class="spr-badge-caption">****1 yorum</span>
+                                                    </span>
+                                                    <span class="review-link"><a href="#review">Yorum Yap</a></span>
+                                                </div>
+                                                <script>
+                                                    $('.review-link a').click(function (e) {
+                                                        e.preventDefault();
+                                                        $('html, body').animate({
+                                                            scrollTop: $("#tabs-information").offset().top - 120
+                                                        }, 800);
+                                                        $('.nav-tabs a[href="#review"]').tab('show');
+                                                        return false;
+                                                    });
+                                                </script>
+                                                @using (Html.BeginForm("SepeteEkle", "Home", FormMethod.Post,new { id = "form" }))
+                                                {
+                                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                                    <input type="hidden" name="PizzaId" id="PizzaId" value="@Model.UrunUpdateListModelID" />
+                                                    <div class="product-options " itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+                                                        <meta itemprop="priceCurrency" content="USD">
+                                                        <link itemprop="availability" href="http://schema.org/InStock">
+                                                        <div class="product-type">
+                                                            <div class="select clearfix">
+                                                                <div class="selector-wrapper variant-wrapper-size">
+                                                                    <label for="product-select-option-0">Boyut</label>
+                                                                    @Html.DropDownList("PizzaBoyut",PizzamGelsin.Classes.SelectListFactory.PizzaBoyutEnumSelectList,new
+                                                               {
+                                                                   @class = "single-option-selector",
+                                                                   data_option = "option1",
+                                                                   id = "product-select-option-0"
+                                                               })
+                                                                </div>
+                                                                <div class="selector-wrapper variant-wrapper-size">
+                                                                    <label for="product-select-option-0">Hamur Tipi</label>
+                                                                    @Html.DropDownList("PizzaHamur",PizzamGelsin.Classes.SelectListFactory.HamurEnumSelectList,"Seçiniz",new
+                                                               {
+                                                                   @class = "single-option-selector",
+                                                                   data_option = "option1",
+                                                                   id = "product-select-option-0"
+                                                               })
+                                                                </div>
+                                                                <div class="selector-wrapper variant-wrapper-size">
+                                                                    <label for="product-select-option-0">Kenar Tipi</label>
+                                                                    @Html.DropDownList("PizzaKenar",PizzamGelsin.Classes.SelectListFactory.KenarEnumSelectList, "Seçiniz", new
+                                                               {
+                                                                   @class = "single-option-selector",
+                                                                   data_option = "option1",
+                                                                   id = "product-select-option-0"
+                                                               })
+                                                                </div>
+                                                                <div class="selector-wrapper variant-wrapper-size">
+                                                                    <label for="product-select-option-0">İçecek</label>
+                                                                    @Html.DropDownList("IcecekAdi",PizzamGelsin.Classes.SelectListFactory.IcecekSelectList, "İstemiyorum", new
+                                                               {
+                                                                   @class = "single-option-selector",
+                                                                   data_option = "option1",
+                                                                   id = "product-select-option-0"
+                                                               })
+                                                                    <span id="mahmut">@Html.ValidationMessage("CartModel")</span>
+                                                                </div>
+
+                                                            </div>
+                                                            <script>
+                                                                $(function () {
+                                                                    $('.swatch-element').hover(
+                                                                        function () {
+                                                                            $(this).addClass("hovered");
+                                                                        },
+                                                                        function () {
+                                                                            $(this).removeClass("hovered");
+                                                                        });
+
+                                                                    $(".swatch-element").click(function () {
+                                                                        if (!$(this).hasClass('active')) {
+                                                                            $(this).parent().find(".swatch-element.active").removeClass("active");
+                                                                            $(this).addClass("active");
+                                                                        }
+                                                                    });
+                                                                });
+                                                            </script>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clearfix">
+                                                        <div class="quantity-wrapper">
+                                                            <label class="wrapper-title">Adet</label>
+                                                            <div class="wrapper">
+                                                                <input id="Adet" type="text" name="Adet" value="1" maxlength="5" size="5" class="item-quantity">
+                                                                <div class="qty-btn-vertical">
+                                                                    <span class="qty-down fa fa-chevron-down" title="Decrease" data-src="#Adet">
+                                                                    </span>
+                                                                    <span class="qty-up fa fa-chevron-up" title="Increase" data-src="#Adet">
+                                                                    </span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-price">
+                                                        <meta itemprop="price" content="10.00">
+                                                        <h2 class="price" id="price-preview"><span class="money" data-currency-usd="$10.00" data-currency="USD">@Model.UrunFiyat $</h2>
+                                                    </div>
+                                                    <div class="purchase-section multiple">
+                                                        <div class="purchase">
+                                                            <button id="add-to-cart" onclick="change_qs_quantity('');" class="_btn add-to-cart" type="submit" name="add"><span><i class="fa fa-shopping-cart" style="padding:8px;"></i>Sepete Ekle</span></button>
+                                                            <div id="cart-animation" style="display:none">1</div>
+                                                        </div>
+                                                    </div>
+                                                }
+
+                                            </div>
+
+
+                                        </div>
+
+                                    </div>
+                                    <div id="tabs-information" class="col-md-12 tabs-information">
+                                        <div class="col-md-12 tabs-title">
+                                            <ul class="nav nav-tabs tabs-left sideways">
+                                                <li class="active"><a href="#desc" data-toggle="tab">Description</a></li>
+                                                <li><a href="#review" data-toggle="tab">Yorumlar</a></li>
+                                                <li><a href="#shipping" data-toggle="tab">Shipping Details</a></li>
+                                                <li><a href="#payment" data-toggle="tab">Payment Info</a></li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-12 tabs-content">
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="desc">
+                                                    <p>Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra. Version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.</p>
+                                                    <ul class="angle-right">
+                                                        <li>Version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet.</li>
+                                                        <li>Aenean sollicitudin, lorem quis bibendum auctor</li>
+                                                        <li>Nisi elit consequat ipsum, nec sagittis sem nibh id elit</li>
+                                                        <li>Duis sed odio sit amet nibh vulputate cursus a sit amet mauris</li>
+                                                    </ul>
+                                                </div>
+                                                <div class="tab-pane fade " id="review">
+                                                    <div id="customer_review">
+                                                        <div class="preview_content">
+                                                            <div id="shopify-product-reviews" data-id="6537875078">
+                                                                <div class="spr-container">
+                                                                    <div class="spr-header">
+                                                                        <h2 class="spr-header-title">Customer Reviews</h2>
+                                                                        <div class="spr-summary" itemscope="" itemtype="http://data-vocabulary.org/Review-aggregate">
+                                                                            <meta itemprop="itemreviewed" content="Chanel, the cheetah">
+                                                                            <meta itemprop="votes" content="1">
+                                                                            <span itemprop="rating" itemscope="" itemtype="http://data-vocabulary.org/Rating" class="spr-starrating spr-summary-starrating">
+                                                                                <meta itemprop="average" content="5.0">
+                                                                                <meta itemprop="best" content="5">
+                                                                                <meta itemprop="worst" content="1">
+                                                                                <i class="spr-icon spr-icon-star" style=""></i><i class="spr-icon spr-icon-star" style=""></i><i class="spr-icon spr-icon-star" style=""></i><i class="spr-icon spr-icon-star" style=""></i><i class="spr-icon spr-icon-star" style=""></i>
+                                                                            </span>
+                                                                            <span class="spr-summary-caption">
+                                                                                <span class="spr-summary-actions-togglereviews">Based on 1 review</span>
+                                                                            </span>
+                                                                            <span class="spr-summary-actions">
+                                                                                <a href="#" class="spr-summary-actions-newreview" onclick="active_review_form();return false">Yorum Yap</a>
+                                                                            </span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="spr-content">
+                                                                        <div class="spr-form" id="form_6537875078" style="display: none;">
+                                                                            <form method="post" action="./product.html" id="new-review-form_6537875078" class="new-review-form" onsubmit="SPR.submitForm(this);return false;">
+                                                                                <input type="hidden" name="review[rating]"><input type="hidden" name="product_id" value="6537875078">
+                                                                                <h3 class="spr-form-title">Yorum Yap</h3>
+                                                                                <fieldset class="spr-form-contact">
+                                                                                    <div class="spr-form-contact-name">
+                                                                                        <label class="spr-form-label" for="review_author_6537875078">Name</label>
+                                                                                        <input class="spr-form-input spr-form-input-text " id="review_author_6537875078" type="text" name="review[author]" value="" placeholder="Enter your name">
+                                                                                    </div>
+                                                                                    <div class="spr-form-contact-email">
+                                                                                        <label class="spr-form-label" for="review_email_6537875078">Email</label>
+                                                                                        <input class="spr-form-input spr-form-input-email " id="review_email_6537875078" type="email" name="review[email]" value="" placeholder="john.smith@example.com">
+                                                                                    </div>
+                                                                                </fieldset>
+                                                                                <fieldset class="spr-form-review">
+                                                                                    <div class="spr-form-review-rating">
+                                                                                        <label class="spr-form-label">Rating</label>
+                                                                                        <div class="spr-form-input spr-starrating ">
+                                                                                            <a href="#" class="spr-icon spr-icon-star spr-icon-star-empty" data-value="1">&nbsp;</a>
+                                                                                            <a href="#" class="spr-icon spr-icon-star spr-icon-star-empty" data-value="2">&nbsp;</a>
+                                                                                            <a href="#" class="spr-icon spr-icon-star spr-icon-star-empty" data-value="3">&nbsp;</a>
+                                                                                            <a href="#" class="spr-icon spr-icon-star spr-icon-star-empty" data-value="4">&nbsp;</a>
+                                                                                            <a href="#" class="spr-icon spr-icon-star spr-icon-star-empty" data-value="5">&nbsp;</a>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <div class="spr-form-review-title">
+                                                                                        <label class="spr-form-label" for="review_title_6537875078">Review Title</label>
+                                                                                        <input class="spr-form-input spr-form-input-text " id="review_title_6537875078" type="text" name="review[title]" value="" placeholder="Give your review a title">
+                                                                                    </div>
+                                                                                    <div class="spr-form-review-body">
+                                                                                        <label class="spr-form-label" for="review_body_6537875078">Body of Review <span class="spr-form-review-body-charactersremaining">(1500)</span></label>
+                                                                                        <div class="spr-form-input">
+                                                                                            <textarea class="spr-form-input spr-form-input-textarea " id="review_body_6537875078" data-product-id="6537875078" name="review[body]" rows="10" placeholder="Write your comments here"></textarea>
+
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </fieldset>
+                                                                                <fieldset class="spr-form-actions">
+                                                                                    <input type="submit" class="spr-button spr-button-primary button button-primary btn btn-primary" value="Submit Review">
+                                                                                </fieldset>
+                                                                            </form>
+                                                                        </div>
+                                                                        <div class="spr-reviews" id="reviews_6537875078">
+                                                                            <div class="spr-review" id="spr-review-7003642">
+                                                                                <div class="spr-review-header">
+                                                                                    <span class="spr-starratings spr-review-header-starratings"><i class="spr-icon spr-icon-star" style=""></i><i class="spr-icon spr-icon-star" style=""></i><i class="spr-icon spr-icon-star" style=""></i><i class="spr-icon spr-icon-star" style=""></i><i class="spr-icon spr-icon-star" style=""></i></span>
+                                                                                    <h3 class="spr-review-header-title">FRENCH CONNECTION, SUNDAY BLISS BAG</h3>
+                                                                                    <span class="spr-review-header-byline"><strong>Jin Alkaid</strong> on <strong>Jun 10, 2017</strong></span>
+                                                                                </div>
+                                                                                <div class="spr-review-content">
+                                                                                    <p class="spr-review-content-body">FRENCH CONNECTION, SUNDAY BLISS BAG</p>
+                                                                                </div>
+                                                                                <div class="spr-review-footer">
+                                                                                    <a href="#" class="spr-review-reportreview" onclick="SPR.reportReview(7003642);return false" id="report_7003642" data-msg="This review has been reported">Report as Inappropriate</a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade " id="shipping">
+                                                    <div class="shipping-item">
+                                                        <p class="item-title">Returns Policy</p>
+                                                        <p class="item-desc">
+                                                            Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra.
+                                                            <br> Version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra.
+                                                        </p>
+                                                    </div>
+                                                    <div class="shipping-item">
+                                                        <p class="item-title">Shipping</p>
+                                                        <p class="item-desc">
+                                                            Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra. Version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div class="tab-pane fade " id="payment">
+                                                    Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio. Sed non mauris vitae erat consequat auctor eu in elit. Class aptent taciti sociosqu ad litora torquent per conubia nostra. Version of Lorem Ipsum. Proin gravida nibh vel velit auctor aliquet. Aenean sollicitudin, lorem quis bibendum auctor, nisi elit consequat ipsum, nec sagittis sem nibh id elit. Duis sed odio sit amet nibh vulputate cursus a sit amet mauris. Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor a ornare odio.
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <script type="text/javascript">
+                            function active_review_form() {
+                                if ($("#form_6537875078").attr('style') == 'display: none;') {
+                                    $("#form_6537875078").css('display', 'block');
+                                }
+                                else {
+                                    $("#form_6537875078").css('display', 'none');
+                                }
+                            }
+                            jQuery(document).ready(function ($) {
+                                $('#gallery-images div.image').on('click', function () {
+                                    var $this = $(this);
+                                    var parent = $this.parents('#gallery-images');
+                                    parent.find('.image').removeClass('active');
+                                    $this.addClass('active');
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+
+@section script {
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+    <script>
+            function () {
+                $.validator.unobtrusive.parse("#form");
+            });
+    </script>
+
+}

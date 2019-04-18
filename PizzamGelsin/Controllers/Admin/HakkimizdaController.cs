@@ -42,6 +42,7 @@ namespace PizzamGelsin.Controllers.Admin
 
                 hakkimizda.Resim = new Resim { Url = serverPath };
                 var t = DbFactory.HakkimizdaCrud.Insert(hakkimizda);
+                TempData["sweetalert"] = "<script>swal('Eklendi','Hakkımızda" + " Eklendi', 'success');" + "</script>";
                 file.SaveAs(serverPath);
                 return RedirectToAction("Index");
             }
@@ -69,7 +70,7 @@ namespace PizzamGelsin.Controllers.Admin
                 currenthakkimizda.Resim = new Resim { Url = Server.MapPath("~/classes/m.jpg") };
 
                 DbFactory.HakkimizdaCrud.Update(id, currenthakkimizda);
-
+                TempData["sweetalert"] = "<script>swal('Güncellendi','Hakkımızda" + " Güncellendi', 'success');" + "</script>";
                 return RedirectToAction("Index");
             }
             catch
@@ -82,6 +83,7 @@ namespace PizzamGelsin.Controllers.Admin
         public ActionResult Delete(string id)
         {
             DbFactory.HakkimizdaCrud.Delete(id);
+            TempData["sweetalert"] = "<script>swal('Silindi','Hakkımızda" + " Silindi', 'success');" + "</script>";
             return RedirectToAction("Index");
         }
     }

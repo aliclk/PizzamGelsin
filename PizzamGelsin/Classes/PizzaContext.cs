@@ -44,6 +44,7 @@ namespace PizzamGelsin.Classes
         public virtual DbSet<WebSite> WebSite { get; set; }
         public virtual DbSet<Yorum> Yorum { get; set; }
         public virtual DbSet<IcecekBoyut> IcecekBoyutlar { get; set; }
+        public virtual DbSet<Footer> Footer { get; set; }
 
     }
 

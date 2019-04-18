@@ -40,8 +40,9 @@ namespace PizzamGelsin.Controllers.Admin
                 kenartipi.EkFiyat = ktcm.EkFiyat;
                 string serverPath = Server.MapPath("~/Images/" + Guid.NewGuid().ToString() + ".png");
                 kenartipi.KenarResim = new Resim { Url = serverPath };
-                DbFactory.KenarTipi.Insert(kenartipi);
-                file.SaveAs(Server.MapPath(serverPath));
+                DbFactory.KenarTipiCrud.Insert(kenartipi);
+                TempData["sweetalert"] = "<script>swal('Eklendi','Kenar Tipi" + " Eklendi', 'success');" + "</script>";
+                file.SaveAs(serverPath);
                 return RedirectToAction("Index");
             }
             catch
@@ -62,12 +63,13 @@ namespace PizzamGelsin.Controllers.Admin
         {
             try
             {
-                KenarTipi currentkenartipi = DbFactory.KenarTipi.Find(id);
+                KenarTipi currentkenartipi = DbFactory.KenarTipiCrud.Find(id);
                 currentkenartipi.KenarAdi = ktulm.KenarAdi;
                 currentkenartipi.EkFiyat = ktulm.EkFiyat;
                 currentkenartipi.KenarResim = new Resim { Url = Server.MapPath("~/classes/m.jpg") };
 
-                DbFactory.KenarTipi.Update(id, currentkenartipi);
+                DbFactory.KenarTipiCrud.Update(id, currentkenartipi);
+                TempData["sweetalert"] = "<script>swal('Güncellendi','Kenar Tipi" + " Güncellendi', 'success');" + "</script>";
 
                 return RedirectToAction("Index");
             }
@@ -80,7 +82,9 @@ namespace PizzamGelsin.Controllers.Admin
         // GET: KenarTipi/Delete/5
         public ActionResult Delete(string id)
         {
-            return View();
+            DbFactory.KenarTipiCrud.Delete(id);
+            TempData["sweetalert"] = "<script>swal('Silindi','Kenar Tipi" + " Silindi', 'success');" + "</script>";
+            return RedirectToAction("Index");
         }
     }
 }
